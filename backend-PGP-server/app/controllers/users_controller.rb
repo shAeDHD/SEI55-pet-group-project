@@ -45,10 +45,6 @@ class UsersController < ApplicationController
       render :new
     end
    
-<<<<<<< HEAD
-=======
-
->>>>>>> e074b90180a879d71333400d9126f72b4e8a4950
 #     @user = User.create!(
 #       name: params[:user][:name],
 #       email: params[:user][:email],
