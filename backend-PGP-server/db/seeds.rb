@@ -1,7 +1,79 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+
+Pet.destroy_all
+
+Pet.create!(
+    name: "Mo",
+    age: 89,
+    species: "blob",
+    accessories: true,
+    level: 1,
+    experience: 5
+    
+    
+)
+
+Pet.create!(
+    name: "Shae",
+    age: 5,
+    species: "ghost",
+    accessories: false,
+    level: 2,
+    experience: 50
+    
+    
+)
+
+Pet.create!(
+    name: "Craig",
+    age: 205,
+    species: "creature-3",
+    accessories: true,
+    level: 20,
+    experience: 80
+   
+    
+)
+
+Pet.create!(
+    name: "Wen",
+    age: 20,
+    species: "creature-4",
+    accessories: true,
+    level: 8,
+    experience: 10
+    
+    
+)
+
+puts "create #{ Pet.count } pets."
+
+#############################
+
+User.destroy_all
+
+User.create!(
+    name: "Luke",
+    email: "luke@ga.com",
+    display_name: "luke-dizzle",
+    premium: true,
+    password_digest: "chicken"
+)
+
+User.create!(
+    name: "Kris",
+    email: "kris@ga.com",
+    display_name: "k-fizzle",
+    premium: true,
+    password_digest: "chicken"
+)
+
+User.create!(
+    name: "Shay",
+    email: "shay@ga.com",
+    display_name: "shay-wizzle",
+    premium: false,
+    password_digest: "chicken"
+)
+
+puts "create #{ User.count } users."
+
