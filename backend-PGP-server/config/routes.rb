@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  get 'accessories/new'
+  get 'accessories/create'
+  get 'accessories/index'
+  get 'accessories/show'
+  get 'accessories/edit'
+  get 'accessories/update'
+  get 'accessories/destroy'
   get 'pets/new'
   get 'pets/create'
   get 'pets/index'
