@@ -11,6 +11,7 @@ delete '/login' => 'sessions#destroy'
 #resources
 resources :users
 resources :pets
+resources :accessories
 
 
 end

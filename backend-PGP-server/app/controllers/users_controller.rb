@@ -1,12 +1,14 @@
 class UsersController < ApplicationController
 
-
-
    # React frontend, so we wont have this token
+
+  #  Note we may need to remove this autenticity token
    skip_before_action :verify_authenticity_token, raise:false
 
 
   def home 
+  def new
+    @user = User.new
   end
 
 
@@ -20,6 +22,7 @@ class UsersController < ApplicationController
   end
   
   def create
+<<<<<<< HEAD
   
     headers['Access-Control-Allow-Origin'] = '*'
     user = User.create 
@@ -44,6 +47,22 @@ class UsersController < ApplicationController
       render :new
     end
    
+=======
+#     @user = User.create!(
+#       name: params[:user][:name],
+#       email: params[:user][:email],
+#       display_name: params[:user][:display_name],
+#       premium: params[:user][:premium],
+#       password_digest: params[:user][:password_digest]
+
+#       if @user.persisted?
+#         render json: @user
+#       else
+#         render json: { error: 'Count not create user' }, status: 422
+#       end
+
+#     )
+# >>>>>>> 0831b4b7594c5d182a9e13c38a92cd7c899c2114
   end
   
   #2. Read
@@ -105,4 +124,4 @@ class UsersController < ApplicationController
   params.require(:user).permit(:name, :email, :password,:password_confirmation)
   end
 
-  end
+end
