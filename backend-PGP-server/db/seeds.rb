@@ -3,7 +3,7 @@ User.destroy_all
 
 u1 = User.create!(
     name: 'Shae',
-    email: 'Shae@gmail.com',
+    email: 'shae@gmail.com',
     password: 'chicken',
     premium: false, 
     display_name: 'Shae'
