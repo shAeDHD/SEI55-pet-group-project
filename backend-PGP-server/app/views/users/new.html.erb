@@ -1,2 +1,20 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<div class="sign-up-account">
+<h1>Sign Up </h1>
+
+<%# Below ensures that a pre-exisiting account can re-register %>
+
+<% if @user.errors.any?  %>
+<strong>Please correct the following errors:</strong>
+<ul>
+    <% @user.errors.full_messages.each do |e| %>
+<li>
+    <%= e %>
+</li>
+<% end %>
+</ul>
+<% end %>
+
+<%# Render partial method called on the form for new USER%>
+
+<%= render partial: 'form' %>
+</div>
