@@ -33,6 +33,9 @@ u4 = User.create!(
 
 puts "Done! Created #{ User.count } User:"
 puts User.pluck( :name).join( ', ' )
+
+################################################
+
 Pet.destroy_all
 
 Pet.create!(
@@ -83,5 +86,43 @@ puts "create #{ Pet.count } pets."
 
 #############################
 
+puts "Creating Moves"
+Move.destroy_all 
 
+Move.create!(
 
+    name:       'slap',
+    offensive:  true,
+    attack:     16,
+    ability:    nil
+
+)
+
+Move.create!(
+
+    name:       'water gun',
+    offensive:  true,
+    attack:     40,
+    ability:    nil
+
+)
+
+Move.create!(
+
+    name:       'boulder smash',
+    offensive:  true,
+    attack:     50,
+    ability:    nil
+
+)
+
+Move.create!(
+
+    name:       'harden',
+    offensive:  false,
+    attack:     nil,
+    ability:    "The opponent's next attack only deals half damage."
+)
+
+puts "Done! Created #{ Move.count } Move:"
+puts Move.pluck( :name).join( ', ' )
