@@ -6,23 +6,12 @@ class UsersController < ApplicationController
    skip_before_action :verify_authenticity_token, raise:false
 
 
-  def home 
   def new
     @user = User.new
   end
 
-
-   #1. Create
-   def new
-  
-  
-    # Form for the new USER
-    @user = User.new
-  
-  end
   
   def create
-<<<<<<< HEAD
   
     headers['Access-Control-Allow-Origin'] = '*'
     user = User.create 
@@ -47,7 +36,7 @@ class UsersController < ApplicationController
       render :new
     end
    
-=======
+
 #     @user = User.create!(
 #       name: params[:user][:name],
 #       email: params[:user][:email],
@@ -63,7 +52,7 @@ class UsersController < ApplicationController
 
 #     )
 # >>>>>>> 0831b4b7594c5d182a9e13c38a92cd7c899c2114
-  end
+  end # create
   
   #2. Read
   
