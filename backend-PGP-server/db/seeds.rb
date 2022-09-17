@@ -3,7 +3,7 @@ User.destroy_all
 
 u1 = User.create!(
     name: 'Shae',
-    email: 'Shae@gmail.com',
+    email: 'shae@gmail.com',
     password: 'chicken',
     premium: false, 
     display_name: 'Shae'
@@ -83,31 +83,5 @@ puts "create #{ Pet.count } pets."
 
 #############################
 
-User.destroy_all
 
-User.create!(
-    name: "Luke",
-    email: "luke@ga.com",
-    display_name: "luke-dizzle",
-    premium: true,
-    password_digest: "chicken"
-)
-
-User.create!(
-    name: "Kris",
-    email: "kris@ga.com",
-    display_name: "k-fizzle",
-    premium: true,
-    password_digest: "chicken"
-)
-
-User.create!(
-    name: "Shay",
-    email: "shay@ga.com",
-    display_name: "shay-wizzle",
-    premium: false,
-    password_digest: "chicken"
-)
-
-puts "create #{ User.count } users."
 

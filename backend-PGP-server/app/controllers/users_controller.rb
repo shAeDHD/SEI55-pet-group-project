@@ -6,7 +6,6 @@ class UsersController < ApplicationController
    skip_before_action :verify_authenticity_token, raise:false
 
 
-  def home 
   def new
     @user = User.new
   end
@@ -46,6 +45,10 @@ class UsersController < ApplicationController
       render :new
     end
    
+<<<<<<< HEAD
+=======
+
+>>>>>>> e074b90180a879d71333400d9126f72b4e8a4950
 #     @user = User.create!(
 #       name: params[:user][:name],
 #       email: params[:user][:email],
@@ -61,7 +64,7 @@ class UsersController < ApplicationController
 
 #     )
 # >>>>>>> 0831b4b7594c5d182a9e13c38a92cd7c899c2114
-  end
+  end # create
   
   #2. Read
   
