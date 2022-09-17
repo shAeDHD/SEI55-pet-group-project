@@ -55,6 +55,10 @@ end
 
 gem 'pry-rails'
 
+# Gem for connection json to front end
 gem 'rack-cors'
 
+# Gem to set up knock users
+gem 'knock'
+gem 'jwt'
 

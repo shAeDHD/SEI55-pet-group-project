@@ -20,7 +20,7 @@ u3 = User.create!(
     email: 'craig@gmail.com',
     password: 'chicken',
     premium: false, 
-    display_name: 'Wen'
+    display_name: 'Craig'
 )
 u4 = User.create!(
     name: 'Mohamad',

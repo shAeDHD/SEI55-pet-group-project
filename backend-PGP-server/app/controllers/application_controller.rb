@@ -1,4 +1,9 @@
-class ApplicationController < ActionController::Base   
+class ApplicationController < ActionController::Base  
+    
+    skip_before_action :verify_authenticity_token
+
+    include Knock::Authenticable
+    
     before_action :fetch_user
     def fetch_user
          #check if the user is logged in

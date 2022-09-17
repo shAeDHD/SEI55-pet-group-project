@@ -11,18 +11,10 @@ class UsersController < ApplicationController
   end
 
 
-   #1. Create
-  #  def new
-  
-  
-  #   # Form for the new USER
-  #   @user = User.new
-  
-  # end
-  
+
   def create
   
-    headers['Access-Control-Allow-Origin'] = '*'
+    # headers['Access-Control-Allow-Origin'] = '*'
     user = User.create 
   
       if user.present?
@@ -45,10 +37,6 @@ class UsersController < ApplicationController
       render :new
     end
    
-<<<<<<< HEAD
-=======
-
->>>>>>> e074b90180a879d71333400d9126f72b4e8a4950
 #     @user = User.create!(
 #       name: params[:user][:name],
 #       email: params[:user][:email],
@@ -70,7 +58,7 @@ class UsersController < ApplicationController
   
   def index
   
-    headers['Access-Control-Allow-Origin'] = '*'
+    # headers['Access-Control-Allow-Origin'] = '*'
     # Send to Ajax JS code, as JSON
     render json: User.all
   
