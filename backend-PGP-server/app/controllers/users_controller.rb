@@ -13,16 +13,15 @@ class UsersController < ApplicationController
 
 
    #1. Create
-   def new
+  #  def new
   
   
-    # Form for the new USER
-    @user = User.new
+  #   # Form for the new USER
+  #   @user = User.new
   
-  end
+  # end
   
   def create
-<<<<<<< HEAD
   
     headers['Access-Control-Allow-Origin'] = '*'
     user = User.create 
@@ -47,7 +46,6 @@ class UsersController < ApplicationController
       render :new
     end
    
-=======
 #     @user = User.create!(
 #       name: params[:user][:name],
 #       email: params[:user][:email],
