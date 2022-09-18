@@ -9,33 +9,23 @@ class PetsController < ApplicationController
 
   def create
 
-    if user.present?
-      # send the created reservation object to JSON
-      render json: user.id
-    else
-      # error message
-      render json: {error: 'Could not create pet - user not logged in'}, status: 422
-    end #if statement  
+    @pet = Pet.new pet_params
+    @pet.user_id = @current_user.id
     
-    @pet = Pet.create(
-      name: params[:pet][:name],
-      age: params[:pet][:age],
-      species: params[:pet][:species],
-      accessories: params[:pet][:accessories],
-      level: params[:pet][:level],
-      experience: params[:pet][:experience],
-      last_fed: params[:pet][:last_fed],
-      last_fought: params[:pet][:last_fought],
-      last_slept: params[:pet][:last_slept],
-      last_stretched: params[:pet][:last_stretched],
-      last_drank: params[:pet][:last_drank]
-    )
+    # if params[:pet][:image].present?
 
-      if @pet.persisted?
-        render json: @pet
-      else
-        render json: { error: 'Could not create pet' }, status: 422
-      end
+    #   response = Cloudinary::Uploader.upload params[:pet][:image]
+    #   @pet.image = response["public_id"]
+      
+    # end #if
+    
+    @pet.save
+
+    if @pet.persisted?
+      redirect_to pet_path
+    else
+      render :new
+    end #if
 
   end #create
 
@@ -65,6 +55,19 @@ class PetsController < ApplicationController
   end # update
 
   def destroy
+
+    Pet.destroy params[:id]
+    redirect_to pets_path
+    
   end # destroy
+
+  #######################################
+  private
+
+  def pet_params
+
+    params.require(:pet).permit(:name, :age, :species, :level, :experience, :accessories)
+    
+  end
 
 end
