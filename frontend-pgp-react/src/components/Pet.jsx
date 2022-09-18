@@ -44,13 +44,12 @@ class Pet extends React.Component{
                 <ul>
                 {
                 this.state.pet.map ( p => <li>
-                    Name: {p.name} <br /> 
-                    Age:{p.age} <br /> 
-                    Species:{p.species} <br /> 
-                    Level:{p.level} <br /> 
-                    Experience:{p.experience} <br /> 
-                    User ID: {p.user_id} <br />
-                    <br />
+                    Name: {p.name} {""}{""} 
+                    Age:{p.age} {""}{""} 
+                    Species:{p.species} {""}{""} 
+                    Level:{p.level} {""}{""} 
+                    Experience:{p.experience} {""}{""} 
+                    User ID: {p.user_id} {""}{""}
                 </li>
                 )
                 }
