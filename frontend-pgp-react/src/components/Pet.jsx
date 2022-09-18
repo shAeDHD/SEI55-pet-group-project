@@ -59,3 +59,5 @@ class Pet extends React.Component{
         )//return
     } // render()
 } // class Pet
+
+export default Pet;
