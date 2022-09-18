@@ -42,9 +42,10 @@ class PetsController < ApplicationController
   def index
     
     @pets = Pet.all
-    respond_to do |format|
-      format.json{render json:{@pets}}
-    end
+    render json: @pets
+    # respond_to do |format|
+    #   format.json{render json:{@pets}}
+    # end
 
   end # index
 
