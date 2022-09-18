@@ -22,7 +22,7 @@ class UsersController < ApplicationController
         render json: user
       else
         #error message
-        render json: {error: 'Could not create reservation'}, status: 422
+        render json: {error: 'Could not create user'}, status: 422
       end #if statement  
    
     # Create a new user 

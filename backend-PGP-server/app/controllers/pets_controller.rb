@@ -1,10 +1,23 @@
 class PetsController < ApplicationController
+
+  #  Note we may need to remove this autenticity token
+  skip_before_action :verify_authenticity_token, raise:false
+
   def new
     @pet = Pet.new
   end
 
   def create
-    @pet = Pet.create!(
+
+    if user.present?
+      # send the created reservation object to JSON
+      render json: user.id
+    else
+      # error message
+      render json: {error: 'Could not create pet - user not logged in'}, status: 422
+    end #if statement  
+    
+    @pet = Pet.create(
       name: params[:pet][:name],
       age: params[:pet][:age],
       species: params[:pet][:species],
@@ -16,30 +29,35 @@ class PetsController < ApplicationController
       last_slept: params[:pet][:last_slept],
       last_stretched: params[:pet][:last_stretched],
       last_drank: params[:pet][:last_drank]
+    )
 
       if @pet.persisted?
         render json: @pet
       else
-        render json: { error: 'Count not create pet' }, status: 422
+        render json: { error: 'Could not create pet' }, status: 422
       end
 
-    )
-  end
+  end #create
 
   def index
-    @pet = Pet.all
+    
+    @pets = Pet.all
+    respond_to do |format|
+      format.json{render json:{@pets}}
+    end
 
-  end
+  end # index
 
   def show
-  end
+  end # show
 
   def edit
-  end
+  end # edit
 
   def update
-  end
+  end # update
 
   def destroy
-  end
+  end # destroy
+
 end

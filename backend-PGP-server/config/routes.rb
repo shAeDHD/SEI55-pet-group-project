@@ -9,6 +9,11 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   delete '/login' => 'sessions#destroy' 
 
+  get '/pet' => 'pet#new'
+  post '/pet' => 'pet#create'
+  delete '/pet' => 'pet#destroy'
+
+
   #resources
   resources :users
   resources :pets
