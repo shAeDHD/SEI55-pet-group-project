@@ -13,9 +13,10 @@ delete '/login' => 'sessions#destroy'
  get '/users/current' => 'users#current'
 
 
-  get '/pet' => 'pet#new'
-  post '/pet' => 'pet#create'
-  delete '/pet' => 'pet#destroy'
+  get '/pet' => 'pets#new'
+  get '/pet/index' => 'pets#index'
+  post '/pet/create' => 'pets#create'
+  delete '/pet' => 'pets#destroy'
 
 
   #resources
