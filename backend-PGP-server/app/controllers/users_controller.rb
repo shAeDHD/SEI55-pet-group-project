@@ -19,18 +19,28 @@ class UsersController < ApplicationController
 
     @user = User.new
     
+    user = User.create!(
+      name: params[:name],
+      email: params[:email],
+      display_name: params[:display_name],
+      password: params[:password]
+    )
+    if user.persisted?
+      render json: user
+    else
+      render json: { error: 'Count not create user' }, status: 422
+    end
   end
 
   def signup
-    @user = User.create!(
-            name: params[:user][:name],
-            email: params[:user][:email],
-            display_name: params[:user][:display_name],
-            premium: params[:user][:premium],
-            password_digest: params[:user][:password_digest]
+    user = User.create!(
+            name: params[:name],
+            email: params[:email],
+            display_name: params[:display_name],
+            password: params[:password]
           )
-          if @user.persisted?
-            render json: @user
+          if user.persisted?
+            render json: user
           else
             render json: { error: 'Count not create user' }, status: 422
           end
