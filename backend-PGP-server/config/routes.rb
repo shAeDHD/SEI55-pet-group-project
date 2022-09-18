@@ -16,9 +16,9 @@ Rails.application.routes.draw do
   post '/user/signup' => 'users#create'
 
 
-  get '/pet' => 'pets#new'
+  get '/pet/new' => 'pets#new'
   get '/pet/index' => 'pets#index'
-  post '/pet/create' => 'pets#create'
+  get '/pet/create' => 'pets#create'
   delete '/pet' => 'pets#destroy'
 
 

@@ -1,6 +1,6 @@
 class User < ApplicationRecord
 
     has_secure_password
-    belongs_to :pets, optional: true
+    has_many :pets
 
 end
