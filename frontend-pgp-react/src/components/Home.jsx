@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import dudePet from '../dudePet.css';
 import App from "../App";
 
 import User from './User';
@@ -10,6 +9,12 @@ import Login from './Login';
 import SignUp from './SignUp';
 import MyProfile from './MyProfile';
 import axios from 'axios';
+
+// --------- Critter Related Import ------------ //
+import DudeCritterAnimations from './DudeCritterAnimations.jsx';
+import OwletCritterAnimations from './OwletCritterAnimations';
+import PinkCritterAnimations from './PinkCritterAnimations';
+// --------------------------------------------- //
 
 // backend url
 const BASE_BACKEND_URL = 'http://localhost:3000';
@@ -95,8 +100,16 @@ class Home extends React.Component {
                     <Link to="/pets_test">Critter Animation Testing</Link>
                     </nav>
 
-
-                <dudeCritterAnimations/>
+                { /*  Critter Animations  */ }
+                <DudeCritterAnimations/>
+                <OwletCritterAnimations/>
+                <PinkCritterAnimations/>
+                {/* 
+                    * FOR INSTRUCTIONS ON CRITTER ANIMATION USAGE * 
+                    *      CHECK THE CORRESPONDING .css FILE.     * 
+                    
+                    eg. DudeCritter.css 
+                */}
 
                 </header>
                 {/* Routes to the various pages */}
@@ -106,7 +119,7 @@ class Home extends React.Component {
                     <Route exact path="/users" component={User}/>
                     <Route exact path="/accessories" component={Accessories}/>
                     {/* <Route exact path="/pet" component={Pet}/> */}
-                    <Route exact path="/pets_test" component={dudeCritterAnimations}/>
+                    <Route exact path="/pets_test" component={DudeCritterAnimations}/>
             </Router>
             </div>
  

@@ -54,7 +54,7 @@ class DudeCritterAnimations extends React.Component {
     
 }
 
-/* *************  Possible 4Frame Animations  ************** */
+/* ************  Possible 4Frame Animations  *************** */
 /*  First row animation is 'punch 1'        */
 .punch{
     top: calc(0 * var(--pixel-size-four))
