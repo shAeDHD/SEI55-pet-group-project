@@ -10,10 +10,10 @@ import SignUp from './SignUp';
 import MyProfile from './MyProfile';
 import axios from 'axios';
 
-// --------- Critter Related Import ------------ //
+// -------- Critter Related Imports ------------ //
 import DudeCritterAnimations from './DudeCritterAnimations.jsx';
-import OwletCritterAnimations from './OwletCritterAnimations';
-import PinkCritterAnimations from './PinkCritterAnimations';
+import OwletCritterAnimations from './OwletCritterAnimations.jsx';
+import PinkCritterAnimations from './PinkCritterAnimations.jsx';
 // --------------------------------------------- //
 
 // backend url
@@ -96,14 +96,19 @@ class Home extends React.Component {
                     <Link to="/accessories">Accessories</Link>
                     {''} | {''}
                     <Link to="/users">Users</Link>
+                    <br/>
+                    
+                    <Link to="/dude_critter">Dude Critter Animation Testing</Link>
                     {'	'}|{'	'}
-                    <Link to="/pets_test">Critter Animation Testing</Link>
+                    <Link to="/owlet_critter">Owlet Critter Animation Testing</Link>
+                    {'	'}|{'	'}
+                    <Link to="/pink_critter">Pink Critter Animation Testing</Link>
                     </nav>
 
                 { /*  Critter Animations  */ }
-                <DudeCritterAnimations/>
-                <OwletCritterAnimations/>
-                <PinkCritterAnimations/>
+                {/* <DudeCritterAnimations/> */}
+                {/* <OwletCritterAnimations/> */}
+                {/* <PinkCritterAnimations/> */}
                 {/* 
                     * FOR INSTRUCTIONS ON CRITTER ANIMATION USAGE * 
                     *      CHECK THE CORRESPONDING .css FILE.     * 
@@ -119,7 +124,9 @@ class Home extends React.Component {
                     <Route exact path="/users" component={User}/>
                     <Route exact path="/accessories" component={Accessories}/>
                     {/* <Route exact path="/pet" component={Pet}/> */}
-                    <Route exact path="/pets_test" component={DudeCritterAnimations}/>
+                    <Route exact path="/dude_critter" component={DudeCritterAnimations}/>
+                    <Route exact path="/owlet_critter" component={OwletCritterAnimations}/>
+                    <Route exact path="/pink_critter" component={PinkCritterAnimations}/>
             </Router>
             </div>
  

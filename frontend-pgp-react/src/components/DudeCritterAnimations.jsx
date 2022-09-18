@@ -4,23 +4,19 @@ import DudeCritter from "../DudeCritter.css";
 import dude4frames from "../assets/dudeMonster/fourFrames_dude.png";
 import dude6frames from "../assets/dudeMonster/sixFrames_dude.png";
 import dude8frames from "../assets/dudeMonster/eightFrames_dude.png";
- 
 
 
 class DudeCritterAnimations extends React.Component {
 
 
-
-
-    render (){
+    render () {
 
 
         return(
-         
-           <div>
+            <div>
                 <h3> Animations for Dude Critter </h3>
                
-                <div className="dudeFourFramesViewbox pixelArt " >
+                <div className="dudeFourFramesViewbox pixelArt" >
                     <img src={dude4frames} alt="character" 
                     className="
                     idle
@@ -45,8 +41,6 @@ class DudeCritterAnimations extends React.Component {
                     pixelArt
                     "/>
                 </div>
-
-
             </div>
         );  // return()
 
