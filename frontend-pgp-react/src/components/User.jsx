@@ -5,7 +5,7 @@ const RAILS_USER_BASE_URL = 'http://localhost:3000/users';
 
 
 class User extends React.Component{
-    state ={
+    state = {
         users: [],
         loading: true,
         error: null
@@ -29,7 +29,7 @@ class User extends React.Component{
 
         } // try
         catch( err ){
-            console.log('Error Loading secrets from API', err);
+            console.log('Error Loading users from API', err);
 
             this.setState({
                 loading: false,
