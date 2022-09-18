@@ -13,10 +13,10 @@ delete '/login' => 'sessions#destroy'
  get '/users/current' => 'users#current'
 
 
-#resources
-resources :users
-resources :pets
-resources :accessories
+  #resources
+  resources :users
+  resources :pets
+  resources :accessories
 
 
-end
+end 
