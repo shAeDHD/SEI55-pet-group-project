@@ -3,7 +3,16 @@ class UsersController < ApplicationController
    # React frontend, so we wont have this token
 
   #  Note we may need to remove this autenticity token
-   skip_before_action :verify_authenticity_token, raise:false
+  #  skip_before_action :verify_authenticity_token, raise:false
+
+
+  # Users controller the before_action what to put here
+
+  #  before_action :authenticate_user
+
+   def current
+     render json: current_user
+   end
 
 
   def new
