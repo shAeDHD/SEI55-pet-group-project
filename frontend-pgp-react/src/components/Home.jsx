@@ -1,12 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Pet from './Pet';
+import dudePet from '../dudePet.css';
+import App from "../App";
+
 import User from './User';
 import Accessories from './Accessories';
 import { Route, HashRouter as Router, Link } from "react-router-dom";
 
-
-
+import dudeCritterAnimations from './DudeCritterAnimations.jsx';
 
 
 
@@ -30,14 +31,19 @@ class Home extends React.Component {
                     <Link to="/accessories">Accessories</Link>
                     {''} | {''}
                     <Link to="/users">Users</Link>
+                    {'	'}|{'	'}
+                    <Link to="/pets_test">Critter Animation Testing</Link>
                     </nav>
 
+
+                <dudeCritterAnimations/>
 
                 </header>
                 {/* Routes to the various pages */}
                     <Route exact path="/users" component={User}/>
                     <Route exact path="/accessories" component={Accessories}/>
-                    <Route exact path="/pet" component={Pet}/>
+                    {/* <Route exact path="/pet" component={Pet}/> */}
+                    <Route exact path="/pets_test" component={dudeCritterAnimations}/>
             </Router>
             </div>
  
