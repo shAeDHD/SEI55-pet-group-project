@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
  
-  post 'user_token' => 'user_token#create'
 # root to temporary home page
 root to: 'users#home'
 
@@ -8,6 +7,11 @@ root to: 'users#home'
 get '/login' => 'sessions#new'
 post '/login' => 'sessions#create'
 delete '/login' => 'sessions#destroy' 
+ #Get the login token from Knock
+ post 'user_token' => 'user_token#create'
+ #User routes
+ get '/users/current' => 'users#current'
+
 
 #resources
 resources :users
