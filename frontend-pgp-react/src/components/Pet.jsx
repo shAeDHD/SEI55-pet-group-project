@@ -1,19 +1,22 @@
 import React from "react";
 import axios from "axios";
-const RAILS_USER_BASE_URL = 'http://localhost:3000/pet';
+const RAILS_USER_BASE_URL = 'http://localhost:3000/pets';
 
 class Pet extends React.Component{
+
     state = {
         pet: [],
         loading: true,
         error: null
     }
+
     componentDidMount(){
         // We want to load the Pet data
         console.log('componentDidMount for pet()');
         this.fetchPet();
     
     } // Mount
+
     fetchPet = async () => {
 
         try{
@@ -38,7 +41,9 @@ class Pet extends React.Component{
     } // fetch
 
     render(){
+
         return(
+
             <div className="Pet">
                 <h1>Pet</h1>
                 <ul>
@@ -56,8 +61,11 @@ class Pet extends React.Component{
                 </ul>
 
             </div>
+
         )//return
+
     } // render()
+
 } // class Pet
 
 export default Pet;
