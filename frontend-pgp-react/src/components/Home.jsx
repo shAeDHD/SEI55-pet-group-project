@@ -5,6 +5,7 @@ import User from './User';
 import Accessories from './Accessories';
 import { Route, HashRouter as Router, Link } from "react-router-dom";
 import Login from './Login';
+import SignUp from './SignUp';
 import MyProfile from './MyProfile';
 import axios from 'axios';
 
@@ -73,7 +74,7 @@ class Home extends React.Component {
                         :
                         (
                             <div className='Login'>
-                            <h4><Link to='/login'>Login</Link></h4>
+                            <h4><Link to='/login'>Login</Link>{' '}|{' '}<Link to='/signup'>Sign Up</Link></h4>
                             </div>
                         )
                     }
@@ -93,6 +94,7 @@ class Home extends React.Component {
 
                 </header>
                 {/* Routes to the various pages */}
+                    <Route exact path="/signup" component={SignUp}/>
                     <Route exact path="/my_profile" component={MyProfile}/>
                     <Route exact path='/login' render={(props) => <Login setCurrentUser={this.setCurrentUser}{...props}/>}/>
                     <Route exact path="/users" component={User}/>
