@@ -19,15 +19,20 @@ class SignUp extends React.Component{
         switch(ev.target.name){
             case 'name':
                 this.setState({name: ev.target.value})
+                console.log("name:", ev.target.value);
                 break;
             case 'display_name':
                 this.setState({display_name: ev.target.value})
+                console.log("display_name:", ev.target.value);
                 break;
             case 'email':
                 this.setState({email: ev.target.value})
+                console.log("email:", ev.target.value);
                 break;
             case 'password':
                 this.setState({password: ev.target.value})
+                console.log("password:", ev.target.value);
+
         }
 
 
@@ -39,13 +44,14 @@ class SignUp extends React.Component{
         const request = {'name': this.state.name, 'display_name': this.state.display_name, 'email': this.state.email, 'password': this.state.password}
 
         // do a axios post request to send signup/new user details to rails
-        axios.post(`${BASE_SIGNUP_URL}/users/signup`)
+        axios.post(`${BASE_SIGNUP_URL}/user/signup`, {auth: request})
         .then(result =>{
             this.props.setCurrentUser();
             this.props.history.push('/my_profile');
         })
         .catch(err => {
-            console.warn(err)
+            console.log('sign-up failed');
+            console.warn(err);
         })
         ev.preventDefault();
 

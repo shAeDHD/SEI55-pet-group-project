@@ -46,6 +46,7 @@ class Login extends React.Component{
     })
     .catch(err => {
         console.warn(err)
+        console.log('incorrect log in');
     })
     ev.preventDefault();
 
