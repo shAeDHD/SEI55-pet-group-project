@@ -1,18 +1,31 @@
 Rails.application.routes.draw do
  
-  post 'user_token' => 'user_token#create'
-# root to temporary home page
-root to: 'users#home'
+  # root to temporary home page
+  root to: 'users#home'
 
-# roots to login details
-get '/login' => 'sessions#new'
-post '/login' => 'sessions#create'
-delete '/login' => 'sessions#destroy' 
+  # roots to login details
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  delete '/login' => 'sessions#destroy' 
 
-#resources
-resources :users
-resources :pets
-resources :accessories
+  #Get the login token from Knock
+  post '/user_token' => 'user_token#create'
+  #User routes
+  get '/users/current' => 'users#current'
+
+  post '/user/signup' => 'users#create'
 
 
-end
+  get '/pet/new' => 'pets#new'
+  get '/pet/index' => 'pets#index'
+  get '/pet/create' => 'pets#create'
+  delete '/pet' => 'pets#destroy'
+
+
+  #resources
+  resources :users
+  resources :pets
+  resources :accessories
+
+
+end 

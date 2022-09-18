@@ -3,14 +3,48 @@ class UsersController < ApplicationController
    # React frontend, so we wont have this token
 
   #  Note we may need to remove this autenticity token
-   skip_before_action :verify_authenticity_token, raise:false
+  #  skip_before_action :verify_authenticity_token, raise:false
+
+
+  # Users controller the before_action what to put here
+
+  #  before_action :authenticate_user
+
+   def current
+     render json: current_user
+   end
 
 
   def new
+
     @user = User.new
+    
+    user = User.create!(
+      name: params[:name],
+      email: params[:email],
+      display_name: params[:display_name],
+      password: params[:password]
+    )
+    if user.persisted?
+      render json: user
+    else
+      render json: { error: 'Count not create user' }, status: 422
+    end
   end
 
-
+  def signup
+    user = User.create!(
+            name: params[:name],
+            email: params[:email],
+            display_name: params[:display_name],
+            password: params[:password]
+          )
+          if user.persisted?
+            render json: user
+          else
+            render json: { error: 'Count not create user' }, status: 422
+          end
+  end
 
   def create
   
@@ -22,7 +56,7 @@ class UsersController < ApplicationController
         render json: user
       else
         #error message
-        render json: {error: 'Could not create reservation'}, status: 422
+        render json: {error: 'Could not create user'}, status: 422
       end #if statement  
    
     # Create a new user 
@@ -30,28 +64,13 @@ class UsersController < ApplicationController
     
     # New addition to save user - come back and do this
   
-    if @user.persisted?
-    session[:user_id] = @user.id #login automatically
-    redirect_to user_path(@user.id) #go to user profile pages
-    else
-      render :new
-    end
-   
-#     @user = User.create!(
-#       name: params[:user][:name],
-#       email: params[:user][:email],
-#       display_name: params[:user][:display_name],
-#       premium: params[:user][:premium],
-#       password_digest: params[:user][:password_digest]
+      if @user.persisted?
+        session[:user_id] = @user.id #login automatically
+        redirect_to user_path(@user.id) #go to user profile pages
+        else
+          render :new
+      end
 
-#       if @user.persisted?
-#         render json: @user
-#       else
-#         render json: { error: 'Count not create user' }, status: 422
-#       end
-
-#     )
-# >>>>>>> 0831b4b7594c5d182a9e13c38a92cd7c899c2114
   end # create
   
   #2. Read
@@ -67,7 +86,7 @@ class UsersController < ApplicationController
   end
   
   def show
-    @user = User.find params[:id]
+    # @user = User.find params[:id]
   end
   
   #3 Update

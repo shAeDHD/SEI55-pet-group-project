@@ -1,45 +1,73 @@
 class PetsController < ApplicationController
+
+  #  Note we may need to remove this autenticity token
+  skip_before_action :verify_authenticity_token, raise:false
+
   def new
     @pet = Pet.new
   end
 
   def create
-    @pet = Pet.create!(
-      name: params[:pet][:name],
-      age: params[:pet][:age],
-      species: params[:pet][:species],
-      accessories: params[:pet][:accessories],
-      level: params[:pet][:level],
-      experience: params[:pet][:experience],
-      last_fed: params[:pet][:last_fed],
-      last_fought: params[:pet][:last_fought],
-      last_slept: params[:pet][:last_slept],
-      last_stretched: params[:pet][:last_stretched],
-      last_drank: params[:pet][:last_drank]
 
-      if @pet.persisted?
-        render json: @pet
-      else
-        render json: { error: 'Count not create pet' }, status: 422
-      end
+    @pet = Pet.new pet_params
+    @pet.user_id = @current_user.id
+    
+    # if params[:pet][:image].present?
 
-    )
+    #   response = Cloudinary::Uploader.upload params[:pet][:image]
+    #   @pet.image = response["public_id"]
+      
+    # end #if
+    
+    @pet.save
+
+    if @pet.persisted?
+      redirect_to pet_path
+    else
+      render :new
+    end #if
+
+  end #create
+
+  def pet_json
+    
+    @pets = Pet.all
+    render json: @pets
+    # respond_to do |format|
+    #   format.json{render json:{@pets}}
+    # end
+
   end
 
   def index
-    @pet = Pet.all
+    
+    @pets = Pet.all
 
-  end
+  end # index
 
   def show
-  end
+  end # show
 
   def edit
-  end
+  end # edit
 
   def update
-  end
+  end # update
 
   def destroy
+
+    Pet.destroy params[:id]
+    redirect_to pets_path
+    
+  end # destroy
+
+  #######################################
+  private
+
+  def pet_params
+
+    params.require(:pet).permit(:name, :age, :species, :level, :experience, :accessories)
+    
   end
+
 end

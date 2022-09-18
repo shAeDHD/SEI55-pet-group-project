@@ -1,0 +1,20 @@
+
+<h2>All Moves</h2>
+
+<% if user.present? %>
+    <%= link_to 'PROFILE PAGE', users_path(user.id)  %>
+<% end %>
+
+<div id="movesindex">
+
+    <ul>
+    
+        <% moves.each do |move| %>
+            <li>
+               <%= link_to move.name, move_path(move.id)  %> 
+            </li>
+        <% end %>
+
+    </ul>
+    
+</div>

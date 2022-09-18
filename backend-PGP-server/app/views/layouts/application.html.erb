@@ -26,7 +26,6 @@
             ||
             <%# Pop-up message warning users to confirm deleting a profile before proceeding %>
             <%= link_to 'Delete Account', user_path(@current_user.id), method: 'delete', :data => { :confirm => 'Are you sure you want to Delete your account?'} %>
-            ||
             <% else %>
             <%= link_to 'Login', login_path %>
             ||
