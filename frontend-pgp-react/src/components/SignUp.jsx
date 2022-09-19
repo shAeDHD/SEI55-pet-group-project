@@ -47,8 +47,6 @@ class SignUp extends React.Component{
         console.log('new user', this.state);
 
         ev.preventDefault();
-        console.log('hi');
-
 
         // Trying new method to post new user
         try{

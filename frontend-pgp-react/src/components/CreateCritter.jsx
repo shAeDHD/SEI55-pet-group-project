@@ -1,31 +1,33 @@
 import React from "react";
 import axios from 'axios';
-import OwletCritterAnimations from "./OwletCritterAnimations";
-import PinkCritterAnimations from "./PinkCritterAnimations";
-import DudeCritterAnimations from "./DudeCritterAnimations";
-import Home from "./Home";
+
 import dude4 from "../assets/dudeMonster/fourFrames_dude.png";
 import pink4 from "../assets/pinkMonster/fourFrames_pink.png";
 import owlet4 from "../assets/owletMonster/fourFrames_owlet.png";
 
-
-import owlet4frames from "../assets/owletMonster/fourFrames_owlet.png";
-import pink4frames from "../assets/pinkMonster/fourFrames_pink.png";
-import dude4frames from "../assets/dudeMonster/fourFrames_dude.png";
-
+const BASE_CREATECRITTER_URL = 'http://localhost:3000'
 // species2: 'dude4',
 // species3: 'owlet4',
 
 class CreateCritter extends React.Component{
     state = {
         currentUser: '',
-        frame: '4',
-        action: 'idle',
+        // frame: '4',
+        // action: 'idle',
         species: 'pink4',
         // species2: 'dude4',
         // species3: 'owlet4',
         // classname: 'pink4',
         clickCount: 0,
+        name:'',
+        age: 1, 
+        level: 1, 
+        experience:1,
+        last_fed: 0,
+        last_fought: 0,
+        last_slept: 0, 
+        last_stretched: 0,
+        last_drank: 0, 
         loading: true,
         error: null
     }
@@ -69,6 +71,58 @@ class CreateCritter extends React.Component{
         }
     };
 
+    critterName = (ev) => {
+        
+        this.setState({name: ev.target.value});
+        console.log('name:', ev.target.value)
+    };
+
+    // submit new users speciy selection
+    submitNewCritter = async (ev) => {
+
+        console.log('new user species', this.state.species);
+
+        ev.preventDefault();
+
+        try{
+            const submitNewPet = await axios.post(`${BASE_CREATECRITTER_URL}/pets`, {
+                name:this.state.name,
+                age:this.state.age,
+                level:this.state.level,
+                experience:this.state.experience,
+                species:this.state.species,
+                last_fed:this.state.last_fed,
+                last_fought:this.state.last_fought,
+                last_slept:this.state.last_slept, 
+                last_stretched:this.state.last_stretched,
+                last_drank:this.state.last_drank
+            })
+            .then(result => {
+                localStorage.setItem("jwt", result.data.token.token)
+
+                console.log("jwt", result.data.token.token);
+                // set axios default headers to have an authorization key
+                axios.defaults.headers.common['Authorization'] = 'Bearer ' + result.data.token.token;
+                // call the function setCurrentUser that was passed in as a prop so that we can set the current user in Home
+                // this.props.setCurrentUser();
+                // redirec the url of the page to /my_profile so we can load the MyProfile component
+                this.props.history.push('/my_profile');
+            })
+
+            console.log(submitNewPet);
+        
+        }
+
+        catch(err){
+            this.setState({
+                loading: false, 
+                error: err
+            })
+
+        }
+
+    }
+
     render(){
 
         return (
@@ -101,9 +155,20 @@ class CreateCritter extends React.Component{
                 </div> */}
 
                 <br /><br />
+                <form onSubmit = {this.submitNewCritter}>
+                <br /><br />
                 <button onClick={this.submitLeft} className="left">Left</button>
                 <button onClick={this.submitRight} className="right">Right</button>
-                <button onClick={this.submitCritter} className="select">Select Critter</button>
+                <br /><br />
+                <input
+                onChange={this.critterName}
+                name="name"
+                type="name"
+                placeholder='Enter Pet Name'
+                />
+                <br /><br />
+                <button className="select">Select Critter</button>
+                </form>
             </div>
 
 // 'idle',
