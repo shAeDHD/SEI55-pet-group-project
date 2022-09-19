@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 
+  
    # React frontend, so we wont have this token
 
   #  Note we may need to remove this autenticity token

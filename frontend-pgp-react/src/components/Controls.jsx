@@ -6,7 +6,7 @@ class Controls extends React.Component {
     critterJump = () => {
         
         this.props.updateAction( '8', 'jump' )
-        console.log(`Critter has been fed`);
+        console.log(`Critter jumped`);
         
 
     }

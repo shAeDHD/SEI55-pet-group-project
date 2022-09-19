@@ -159,7 +159,7 @@ class Home extends React.Component {
                     <Route exact path='/login' render={(props) => <Login setCurrentUser={this.setCurrentUser}{...props}/>}/>
                     <Route exact path='/signup' render={(props) => <SignUp setCurrentUser={this.setCurrentUser}{...props}/>}/>
                     <Route exact path="/users" component={User}/>
-                    <Route exact path="/accessories" component={Accessories}/>
+                    {/* <Route exact path="/accessories" component={Accessories}/> */}
                     {/* <Route exact path="/pet" component={Pet}/> */}
                   <hr />
                   &copy; Critters.Co.2022
