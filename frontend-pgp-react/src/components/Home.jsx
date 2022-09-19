@@ -38,14 +38,24 @@ class Home extends React.Component {
         frameInteger: '4',
         animation:'idle'
 
-         /* AVAILABLE ANIMATIONS 
-              frameInteger:'4'      
+         /* 
+        ** AVAILABLE ANIMATIONS **
+            frameInteger:       '4'      
                 'punch'      
                 'climbing'   
                 'hurt'       
                 'idle'       
                 'throwStone' 
-              frameInteger:'6'    */ 
+            frameInteger:       '6'
+                'oneTwoCombo'
+                'runHug'
+                'sprint'
+                'walking'
+                'walkPunchWalk'
+            frameInteger:       '8'
+                'ko'
+                'jump'    
+            */ 
     };
 
     updateAction = ( frames , action ) => {
@@ -127,8 +137,8 @@ class Home extends React.Component {
                     {''} | {''}
                     <Link to="/pet">Pets</Link>
                     {''} | {''}
-                    <Link to="/accessories">Accessories</Link>
-                    {''} | {''}
+                    {/* <Link to="/accessories">Accessories</Link>
+                    {''} | {''} */}
                     <Link to="/users">Users</Link>
                     
                     <hr />
@@ -159,7 +169,7 @@ class Home extends React.Component {
                     <Route exact path='/login' render={(props) => <Login setCurrentUser={this.setCurrentUser}{...props}/>}/>
                     <Route exact path='/signup' render={(props) => <SignUp setCurrentUser={this.setCurrentUser}{...props}/>}/>
                     <Route exact path="/users" component={User}/>
-                    <Route exact path="/accessories" component={Accessories}/>
+                    {/* <Route exact path="/accessories" component={Accessories}/> */}
                     {/* <Route exact path="/pet" component={Pet}/> */}
                   <hr />
                   &copy; Critters.Co.2022
