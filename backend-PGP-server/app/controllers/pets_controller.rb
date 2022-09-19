@@ -22,7 +22,7 @@ class PetsController < ApplicationController
     @pet.save
 
     if @pet.persisted?
-      redirect_to pet_path
+      redirect_to pets_path
     else
       render :new
     end #if

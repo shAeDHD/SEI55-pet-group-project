@@ -16,10 +16,10 @@ Rails.application.routes.draw do
   post '/user/signup' => 'users#create'
 
 
-  get '/pet/new' => 'pets#new'
-  get '/pet/index' => 'pets#index'
-  get '/pet/create' => 'pets#create'
-  delete '/pet' => 'pets#destroy'
+  # get '/pet/new' => 'pets#new'
+  # get '/pets/index' => 'pets#index'
+  # post '/pets/create' => 'pets#create'
+  # delete '/pets' => 'pets#destroy'
 
 
   #resources
