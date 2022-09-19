@@ -16,6 +16,7 @@ import DudeCritterAnimations from './DudeCritterAnimations.jsx';
 import OwletCritterAnimations from './OwletCritterAnimations.jsx';
 import PinkCritterAnimations from './PinkCritterAnimations.jsx';
 import CritterType from './CritterType';
+import CreateCritter from './CreateCritter';
 
 // --------------------------------------------- //
 
@@ -142,7 +143,8 @@ class Home extends React.Component {
                     {/* <Link to="/accessories">Accessories</Link>
                     {''} | {''} */}
                     <Link to="/users">Users</Link>
-                    
+                    {''} | {''}
+                    <Link to="/createcritter">create</Link>
                     <hr />
                     </nav>
 
@@ -168,11 +170,18 @@ class Home extends React.Component {
                     />
 
                 </div>
+                {/* Below needs to be rendered on the create page didnt work so will render here for now */}
+                <br /><br />
+                <div className='createcritter'>
+                    <CreateCritter />
+
+                </div>
 
                 {/* Routes to the various pages */}
                     {/* change below */}
                     {/* <Route exact path="/" component={SignUp}/> */}
                     {/* <Route exact path="/signup" component={SignUp}/> */}
+                    <Route exact path="/createcriiter" component={CreateCritter}/>
                     <Route exact path="/my_profile" component={MyProfile}/>
                     <Route exact path='/login' render={(props) => <Login setCurrentUser={this.setCurrentUser}{...props}/>}/>
                     <Route exact path='/signup' render={(props) => <SignUp setCurrentUser={this.setCurrentUser}{...props}/>}/>
