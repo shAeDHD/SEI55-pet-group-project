@@ -22,10 +22,10 @@ class CreateCritter extends React.Component{
         frame: '4',
         action: 'idle',
         species: 'pink4',
-        species2: 'dude4',
-        species3: 'owlet4',
-        classname: 'pink4',
-        clickCount: '',
+        // species2: 'dude4',
+        // species3: 'owlet4',
+        // classname: 'pink4',
+        clickCount: 0,
         loading: true,
         error: null
     }
@@ -36,6 +36,39 @@ class CreateCritter extends React.Component{
         'owlet4': owlet4,
     }
 
+    count = () => {
+        if (this.state.clickCount == 0){
+            this.setState ({species: "pink4"});
+            console.log('pink4', this.state.species);
+        } else if (this.state.clickCount == 1){
+            this.setState ({species: "dude4"});
+            console.log('dude4', this.state.species);
+        } else{
+            this.setState ({species: "owlet4"});
+            console.log('owlet4', this.state.species);
+        }
+    };
+
+    submitLeft = () =>{
+        console.log('left click');
+        if (this.state.clickCount <= 0){
+            return
+        } else{
+            this.state.clickCount --
+            this.count();
+        }
+    };
+
+    submitRight = () =>{
+        console.log('right click');
+        if (this.state.clickCount >= 2){
+            return
+        } else{
+            this.state.clickCount ++
+            this.count();
+        }
+    };
+
     render(){
 
         return (
@@ -44,7 +77,7 @@ class CreateCritter extends React.Component{
                 <h1>Create your own Criiter</h1>
 
                 <div className={`${this.state.species}FramesViewbox pixelArt`} >
-                <img src={pink4frames} alt="character" 
+                <img src={this.renderSelection[this.state.species]}alt="character" 
                     className={`
                     idle
                     ${this.state.species}FramesSpriteSheet
@@ -68,9 +101,9 @@ class CreateCritter extends React.Component{
                 </div> */}
 
                 <br /><br />
-                <button className="left">Left</button>
-                <button className="right">Right</button>
-                <button className="select">Select Critter</button>
+                <button onClick={this.submitLeft} className="left">Left</button>
+                <button onClick={this.submitRight} className="right">Right</button>
+                <button onClick={this.submitCritter} className="select">Select Critter</button>
             </div>
 
 // 'idle',
