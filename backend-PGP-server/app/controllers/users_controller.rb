@@ -18,7 +18,7 @@ class UsersController < ApplicationController
   def new
 
     @user = User.new
-    
+
     user = User.create!(
       name: params[:name],
       email: params[:email],
@@ -33,43 +33,49 @@ class UsersController < ApplicationController
   end
 
   def signup
-    user = User.create!(
-            name: params[:name],
-            email: params[:email],
-            display_name: params[:display_name],
-            password: params[:password]
-          )
-          if user.persisted?
-            render json: user
-          else
-            render json: { error: 'Count not create user' }, status: 422
-          end
+
   end
 
   def create
   
-    # headers['Access-Control-Allow-Origin'] = '*'
-    user = User.create 
+    user = User.create!(
+      name: params[:name],
+      email: params[:email],
+      display_name: params[:display_name],
+      password: params[:password]
+    )
+    if user.persisted?
+       # If your User model has a `to_token_payload` method, you should use that here
+      auth_token = Knock::AuthToken.new payload: { sub: user.id }
+      render json: {
+        user: user,
+        token: auth_token
+      }
+    else
+      render json: { error: 'Count not create user' }, status: 422
+    end
+    # # headers['Access-Control-Allow-Origin'] = '*'
+    # user = User.create 
   
-      if user.present?
-        #send the created reservation object to JSON
-        render json: user
-      else
-        #error message
-        render json: {error: 'Could not create user'}, status: 422
-      end #if statement  
+    #   if user.present?
+    #     #send the created reservation object to JSON
+    #     render json: user
+    #   else
+    #     #error message
+    #     render json: {error: 'Could not create user'}, status: 422
+    #   end #if statement  
    
-    # Create a new user 
-    @user = User.create user_params
+    # # Create a new user 
+    # @user = User.create user_params
     
-    # New addition to save user - come back and do this
+    # # New addition to save user - come back and do this
   
-      if @user.persisted?
-        session[:user_id] = @user.id #login automatically
-        redirect_to user_path(@user.id) #go to user profile pages
-        else
-          render :new
-      end
+    #   if @user.persisted?
+    #     session[:user_id] = @user.id #login automatically
+    #     redirect_to user_path(@user.id) #go to user profile pages
+    #     else
+    #       render :new
+    #   end
 
   end # create
   
@@ -129,7 +135,8 @@ class UsersController < ApplicationController
   
   private
   def user_params
-  params.require(:user).permit(:name, :email, :password,:password_confirmation)
+  params.require(:user).permit(:name, :email, :password,:display_name)
+
   end
 
 end
