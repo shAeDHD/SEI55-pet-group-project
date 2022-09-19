@@ -9,11 +9,14 @@ import Login from './Login';
 import SignUp from './SignUp';
 import MyProfile from './MyProfile';
 import axios from 'axios';
+import Controls from './Controls';
 
 // -------- Critter Related Imports ------------ //
 import DudeCritterAnimations from './DudeCritterAnimations.jsx';
 import OwletCritterAnimations from './OwletCritterAnimations.jsx';
 import PinkCritterAnimations from './PinkCritterAnimations.jsx';
+import CritterType from './CritterType';
+
 // --------------------------------------------- //
 
 // backend url
@@ -24,9 +27,48 @@ class Home extends React.Component {
     // home states
     state ={
         // define current user
-        currentUser: undefined
+        currentUser: undefined,
 
+        /* 
+        TODO set when a user is logged in:
+        set.state.criterSpecies to User's Critter species
+        */ 
+
+        critterSpecies: 'dude',
+        frameInteger: '4',
+        animation:'idle'
+
+         /* 
+        ** AVAILABLE ANIMATIONS **
+            frameInteger:       '4'      
+                'punch'      
+                'climbing'   
+                'hurt'       
+                'idle'       
+                'throwStone' 
+            frameInteger:       '6'
+                'oneTwoCombo'
+                'runHug'
+                'sprint'
+                'walking'
+                'walkPunchWalk'
+            frameInteger:       '8'
+                'ko'
+                'jump'    
+            */ 
     };
+
+    updateAction = ( frames , action, returnToFrame, returnToAction, timeout ) => {
+
+        this.setState({ frameInteger: frames , animation: action })
+        
+        /* 
+        The 'timeout' argument is the amount of miliseconds that
+        */
+        setTimeout( () => this.setState({ frameInteger: returnToFrame, animation: returnToAction }), timeout )  
+
+    }
+    
 
     // function to run on component mounting
     componentDidMount(){
@@ -42,7 +84,7 @@ class Home extends React.Component {
         // axios request back end and check if logged in and use token to validate
         axios.get(`${BASE_BACKEND_URL}/users/current`, {
             headers: {
-                'Authoization': token
+                'Authorization': token
             }
         })
         // if token validates set the state of current user
@@ -63,6 +105,10 @@ class Home extends React.Component {
     };
 
     render(){
+
+  
+
+
 
         return (
             <div className="App"> 
@@ -85,7 +131,7 @@ class Home extends React.Component {
                             </div>
                         )
                     }
-                    <br /><br />
+                 
                     <h1>We shall decide</h1>
                     <nav>
                     {/* Links to various pages */}
@@ -93,40 +139,48 @@ class Home extends React.Component {
                     {''} | {''}
                     <Link to="/pet">Pets</Link>
                     {''} | {''}
-                    <Link to="/accessories">Accessories</Link>
-                    {''} | {''}
+                    {/* <Link to="/accessories">Accessories</Link>
+                    {''} | {''} */}
                     <Link to="/users">Users</Link>
-                    <br/>
                     
-                    <Link to="/dude_critter">Dude Critter Animation Testing</Link>
-                    {'	'}|{'	'}
-                    <Link to="/owlet_critter">Owlet Critter Animation Testing</Link>
-                    {'	'}|{'	'}
-                    <Link to="/pink_critter">Pink Critter Animation Testing</Link>
+                    <hr />
                     </nav>
 
-                { /*  Critter Animations  */ }
-                {/* <DudeCritterAnimations/> */}
-                {/* <OwletCritterAnimations/> */}
-                {/* <PinkCritterAnimations/> */}
-                {/* 
-                    * FOR INSTRUCTIONS ON CRITTER ANIMATION USAGE * 
-                    *      CHECK THE CORRESPONDING .css FILE.     * 
-                    
-                    eg. DudeCritter.css 
-                */}
-
                 </header>
+                
+                <div id="critterContainer">
+                    
+                    {/* 
+                        * FOR INSTRUCTIONS ON CRITTER ANIMATION USAGE * 
+                        *      CHECK THE CORRESPONDING .css FILE.     * 
+                        
+                        eg. DudeCritter.css 
+                    */}
+
+                    <CritterType 
+                        species={this.state.critterSpecies}
+                        frame={this.state.frameInteger}
+                        action={this.state.animation}    
+                    />
+
+                    <Controls 
+                        updateAction={this.updateAction}
+                    />
+
+                </div>
+
                 {/* Routes to the various pages */}
-                    <Route exact path="/signup" component={SignUp}/>
+                    {/* change below */}
+                    {/* <Route exact path="/" component={SignUp}/> */}
+                    {/* <Route exact path="/signup" component={SignUp}/> */}
                     <Route exact path="/my_profile" component={MyProfile}/>
                     <Route exact path='/login' render={(props) => <Login setCurrentUser={this.setCurrentUser}{...props}/>}/>
+                    <Route exact path='/signup' render={(props) => <SignUp setCurrentUser={this.setCurrentUser}{...props}/>}/>
                     <Route exact path="/users" component={User}/>
-                    <Route exact path="/accessories" component={Accessories}/>
+                    {/* <Route exact path="/accessories" component={Accessories}/> */}
                     {/* <Route exact path="/pet" component={Pet}/> */}
-                    <Route exact path="/dude_critter" component={DudeCritterAnimations}/>
-                    <Route exact path="/owlet_critter" component={OwletCritterAnimations}/>
-                    <Route exact path="/pink_critter" component={PinkCritterAnimations}/>
+                  <hr />
+                  &copy; Critters.Co.2022
             </Router>
             </div>
  

@@ -9,35 +9,39 @@ class PetsController < ApplicationController
 
   def create
 
-    @pet = Pet.new pet_params
-    @pet.user_id = @current_user.id
-    
-    # if params[:pet][:image].present?
-
-    #   response = Cloudinary::Uploader.upload params[:pet][:image]
-    #   @pet.image = response["public_id"]
+    pet = Pet.create!(
       
-    # end #if
-    
-    @pet.save
+      name: ''
+      # age: params[:age],
+      # species: params[:species],
+      # level: params[:level],
+      # experience: params[:experience],
+      # accessories: params[:accessories]
 
-    if @pet.persisted?
-      redirect_to pets_path
+
+    # if @pet.persisted?
+    #   redirect_to pets_path
+
+    )
+
+    if pet.persisted?
+      render json: pet 
+
     else
-      render :new
-    end #if
+      render json: { error: 'Count not create pet' }, status: 422
+    end
 
   end #create
 
-  def pet_json
+  # def pet_json
     
-    @pets = Pet.all
-    render json: @pets
-    # respond_to do |format|
-    #   format.json{render json:{@pets}}
-    # end
+  #   @pets = Pet.all
+  #   render json: @pets
+  #   # respond_to do |format|
+  #   #   format.json{render json:{@pets}}
+  #   # end
 
-  end
+  # end
 
   def index
     

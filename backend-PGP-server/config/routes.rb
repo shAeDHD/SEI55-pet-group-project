@@ -17,9 +17,11 @@ Rails.application.routes.draw do
 
 
   # get '/pet/new' => 'pets#new'
-  # get '/pets/index' => 'pets#index'
-  # post '/pets/create' => 'pets#create'
-  # delete '/pets' => 'pets#destroy'
+
+  # get '/pet/index' => 'pets#index'
+  # get '/pet/create' => 'pets#create'
+  # delete '/pet' => 'pets#destroy'
+
 
 
   #resources

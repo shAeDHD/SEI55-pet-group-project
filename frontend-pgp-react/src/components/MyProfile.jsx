@@ -10,6 +10,7 @@ class MyProfile extends React.Component{
   state = {
     currentUser: {
       name: '',
+      display_name: '',
       email: ''
     }
   }
@@ -36,7 +37,7 @@ class MyProfile extends React.Component{
     return(
       <div>
         <h1>Hello {this.state.currentUser.name}</h1>
-        <h4>Your email is {this.state.currentUser.email}</h4>
+        <h3>{this.state.currentUser.display_name}</h3>
       </div>
     );
   }//render
