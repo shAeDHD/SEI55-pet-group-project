@@ -78,15 +78,15 @@ class Home extends React.Component {
 
         this.setState({ frameInteger: frames , animation: action })
         /* After 1600ms, reset to idle */
-        setTimeout( () => this.setState({ frameInteger: '8', animation: 'idle' }), 1600 )  
-
+        setTimeout( () => this.setState({ frameInteger: '4', animation: 'idle' }), 1600 )  
+        // Not configured - when using, adjust accordingly
     }
 
     updateActionJump = ( frames , action ) => {
 
         this.setState({ frameInteger: frames , animation: action })
         /* After 4800ms, reset to idle */
-        setTimeout( () => this.setState({ frameInteger: '8', animation: 'idle' }), 4800 )  
+        setTimeout( () => this.setState({ frameInteger: '4', animation: 'idle' }), 4700 )  
 
     }
     
@@ -170,7 +170,12 @@ class Home extends React.Component {
                 </header>
                 
                 
-                <Controls updateAction={this.updateAction}/>
+                <Controls 
+                    updateActionJump={this.updateActionJump}
+                    updateActionKo={this.updateActionKo}
+                    updateAction4={this.updateAction4}
+                    updateAction6={this.updateAction6} 
+                />
                 {/* 
                     * FOR INSTRUCTIONS ON CRITTER ANIMATION USAGE * 
                     *      CHECK THE CORRESPONDING .css FILE.     * 

@@ -5,21 +5,21 @@ class Controls extends React.Component {
 
     critterJump = () => {
         
-        this.props.updateAction( '8', 'jump' )
+        this.props.updateActionJump( '8', 'jump' )
         console.log(`Critter jumped`);
         
     }
 
     critterKo = () => {
         
-        this.props.updateAction( '8', 'ko' )
+        this.props.updateActionKo( '8', 'ko' )
         console.log(`Critter KO'd!`);
         
     }
 
     critterWalkPunchWalk = () => {
         
-        this.props.updateAction( '6', 'walkPunchWalk' )
+        this.props.updateAction6( '6', 'walkPunchWalk' )
         console.log(`Critter walked and punched!`);
         
     }
