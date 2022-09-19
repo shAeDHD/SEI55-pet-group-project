@@ -9,6 +9,8 @@ import pink8frames from "../assets/pinkMonster/eightFrames_pink.png";
 class PinkCritterAnimations extends React.Component {
 
 
+    
+
     render () {
 
 

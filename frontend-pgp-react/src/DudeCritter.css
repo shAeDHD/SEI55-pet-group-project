@@ -34,7 +34,7 @@ class DudeCritterAnimations extends React.Component {
 /* ------------------- Four-Frame Classes ------------------ */
 /* --------------------------------------------------------- */
 /*  This class handles dude4frames viewbox dimensions  */
-.dudeFourFramesViewbox{
+.dude4FramesViewbox{
     width:  calc(32px * var(--pixel-size-four));
     height: calc(32px * var(--pixel-size-four));
     background-color: blanchedalmond;
@@ -46,7 +46,7 @@ class DudeCritterAnimations extends React.Component {
         /*  Hiding the overflow means we only show one section of the Spritesheet at the one time - alternatively, turn it off will show all of the sprite sheet and how it moves throughout the animation process  */
 }
 /*  This class animates the dude4frames Spritesheet using the @keyframes moveSpriteSheet  */
-.dudeFourFramesSpriteSheet{
+.dude4FramesSpriteSheet{
     animation: moveSpriteSheet 0.8s steps(4) infinite;
     width: calc(128px * var(--pixel-size-four));
     position: absolute;
@@ -80,7 +80,7 @@ class DudeCritterAnimations extends React.Component {
 /* ------------------- Six-Frame Classes ------------------- */
 /* --------------------------------------------------------- */
 /* This class controls dude6frames viewbox dimensions */
-.dudeSixFramesViewbox{
+.dude6FramesViewbox{
     width:  calc(32px * var(--pixel-size-four));
     height: calc(32px * var(--pixel-size-four));
     background-color: blanchedalmond;
@@ -88,11 +88,11 @@ class DudeCritterAnimations extends React.Component {
     border-radius: 20%;
 
     position: relative;
-    overflow: hidden;
+    overflow: hidden; 
         /*  Hiding the overflow means we only show one section of the Spritesheet at the one time - alternatively, turn it off will show all of the sprite sheet and how it moves throughout the animation process  */
 }
 /*  This class animates the dude6frames Spritesheet using the @keyframes moveSpriteSheet  */
-.dudeSixFramesSpriteSheet{
+.dude6FramesSpriteSheet{
     animation: moveSpriteSheet 1.2s steps(6) infinite;
     width: calc(128px * var(--pixel-size-six));
     position: absolute;
@@ -126,7 +126,7 @@ class DudeCritterAnimations extends React.Component {
 /* ------------------- Eight-Frame Classes ----------------- */
 /* --------------------------------------------------------- */
 /* This class controls dude8frames viewbox dimensions */
-.dudeEightFramesViewbox{
+.dude8FramesViewbox{
     width:  calc(16px * var(--pixel-size-eight));
     height: calc(16px * var(--pixel-size-eight));
     background-color: blanchedalmond;
@@ -138,7 +138,7 @@ class DudeCritterAnimations extends React.Component {
         /*  Hiding the overflow means we only show one section of the Spritesheet at the one time - alternatively, turn it off will show all of the sprite sheet and how it moves throughout the animation process  */
 }
 /*  This class animates the dude8frames Spritesheet using the @keyframes moveSpriteSheet  */
-.dudeEigthFramesSpriteSheet{
+.dude8FramesSpriteSheet{
     animation: moveSpriteSheet 1.6s steps(8) infinite;
     width: calc(128px * var(--pixel-size-eight));
     position: absolute;
