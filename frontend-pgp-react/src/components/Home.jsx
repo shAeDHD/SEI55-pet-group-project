@@ -42,7 +42,7 @@ class Home extends React.Component {
         // axios request back end and check if logged in and use token to validate
         axios.get(`${BASE_BACKEND_URL}/users/current`, {
             headers: {
-                'Authoization': token
+                'Authorization': token
             }
         })
         // if token validates set the state of current user
@@ -118,9 +118,12 @@ class Home extends React.Component {
 
                 </header>
                 {/* Routes to the various pages */}
-                    <Route exact path="/signup" component={SignUp}/>
+                    {/* change below */}
+                    {/* <Route exact path="/" component={SignUp}/> */}
+                    {/* <Route exact path="/signup" component={SignUp}/> */}
                     <Route exact path="/my_profile" component={MyProfile}/>
                     <Route exact path='/login' render={(props) => <Login setCurrentUser={this.setCurrentUser}{...props}/>}/>
+                    <Route exact path='/signup' render={(props) => <SignUp setCurrentUser={this.setCurrentUser}{...props}/>}/>
                     <Route exact path="/users" component={User}/>
                     <Route exact path="/accessories" component={Accessories}/>
                     {/* <Route exact path="/pet" component={Pet}/> */}

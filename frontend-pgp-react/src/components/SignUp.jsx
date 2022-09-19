@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 
+
 const BASE_SIGNUP_URL = 'http://localhost:3000'
 
 class SignUp extends React.Component{
@@ -19,19 +20,19 @@ class SignUp extends React.Component{
         switch(ev.target.name){
             case 'name':
                 this.setState({name: ev.target.value})
-                console.log("name:", ev.target.value);
+                // console.log("name:", ev.target.value);
                 break;
             case 'display_name':
                 this.setState({display_name: ev.target.value})
-                console.log("display_name:", ev.target.value);
+                // console.log("display_name:", ev.target.value);
                 break;
             case 'email':
                 this.setState({email: ev.target.value})
-                console.log("email:", ev.target.value);
+                // console.log("email:", ev.target.value);
                 break;
             case 'password':
                 this.setState({password: ev.target.value})
-                console.log("password:", ev.target.value);
+                // console.log("password:", ev.target.value);
 
         }
 
@@ -39,21 +40,71 @@ class SignUp extends React.Component{
     } // handleInput
 
     // handle submitting the form
-    handleSubmit = (ev) => {
-        // create a request object to send to knock
-        const request = {'name': this.state.name, 'display_name': this.state.display_name, 'email': this.state.email, 'password': this.state.password}
+    handleSubmit = async (ev) => {
+        // // create a request object to send to knock
+        // const request = {'name': this.state.name, 'display_name': this.state.display_name, 'email': this.state.email, 'password': this.state.password}
+        // prevent reload
+        console.log('new user', this.state);
 
-        // do a axios post request to send signup/new user details to rails
-        axios.post(`${BASE_SIGNUP_URL}/user/signup`, {auth: request})
-        .then(result =>{
-            this.props.setCurrentUser();
-            this.props.history.push('/my_profile');
-        })
-        .catch(err => {
-            console.log('sign-up failed');
-            console.warn(err);
-        })
         ev.preventDefault();
+        console.log('hi');
+
+
+        // Trying new method to post new user
+        try{
+            const submitDeatils = await axios.post(`${BASE_SIGNUP_URL}/users`, {
+                name:this.state.name,
+                display_name:this.state.display_name,
+                email:this.state.email,
+                password:this.state.password
+            })
+            // this.props.setCurrentUser();
+            // this.props.history.push('/my_profile');
+
+
+            // // set state to render the page 
+            // // sign-up page goes to home page
+            .then(result => {
+                localStorage.setItem("jwt", result.data.token.token)
+
+                console.log("jwt", result.data.token.token);
+                // set axios default headers to have an authorization key
+                axios.defaults.headers.common['Authorization'] = 'Bearer ' + result.data.token.token;
+                // call the function setCurrentUser that was passed in as a prop so that we can set the current user in Home
+                this.props.setCurrentUser();
+                // redirec the url of the page to /my_profile so we can load the MyProfile component
+                this.props.history.push('/my_profile');
+            })
+
+            console.log(submitDeatils);
+            // // localStorage.setItem("jwt", result.data.jwt)
+            // // // set axios default headers to have an authorization key
+            // // axios.defaults.headers.common['Authorization'] = 'Bearer ' + result.data.jwt;
+            // // call the function setCurrentUser that was passed in as a prop so that we can set the current user in Home
+            // // this.props.setCurrentUser();
+            // this.setState.CurrentUser();
+            // // redirec the url of the page to /my_profile so we can load the MyProfile component
+            // this.props.history.push('/my_profile');
+            // console.log('this.push', this.props.history.push)
+        }
+        catch(err){
+            this.setState({
+                loading: false, 
+                error: err
+            })
+        }
+
+
+        // // do a axios post request to send signup/new user details to rails
+        // axios.post(`${BASE_SIGNUP_URL}/user/signup`, {auth: request})
+        // .then(result =>{
+        //     this.props.setCurrentUser();
+        //     this.props.history.push('/my_profile');
+        // })
+        // .catch(err => {
+        //     console.log('sign-up failed');
+        //     console.warn(err);
+        // })
 
     }; // handleSubmit
 
