@@ -42,7 +42,7 @@ class CritterType extends React.Component {
     render (){
         
         return(
-            <div className={`${this.props.species}${this.props.frame}FramesViewbox pixelArt`} >
+            <div className={`${this.props.species}${this.props.frame}FramesViewbox pixelArt`} id="viewContainer" >
                 <img src={this.renderCritter[this.props.species+this.props.frame]} alt="character" 
                 className={`
                 ${this.props.action}

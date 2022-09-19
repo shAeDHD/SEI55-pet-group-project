@@ -58,35 +58,14 @@ class Home extends React.Component {
             */ 
     };
 
-    updateAction4 = ( frames , action ) => {
+    updateAction = ( frames , action, returnToFrame, returnToAction, timeout ) => {
 
         this.setState({ frameInteger: frames , animation: action })
-        /* After 4800ms, reset to idle */
-        setTimeout( () => this.setState({ frameInteger: '4', animation: 'idle' }), 4800 )  
-
-    }
-
-    updateAction6 = ( frames , action ) => {
-
-        this.setState({ frameInteger: frames , animation: action })
-        /* After 4800ms, reset to idle */
-        setTimeout( () => this.setState({ frameInteger: '6', animation: 'idle' }), 4800 )  
-
-    }
-
-    updateActionKo = ( frames , action ) => {
-
-        this.setState({ frameInteger: frames , animation: action })
-        /* After 1600ms, reset to idle */
-        setTimeout( () => this.setState({ frameInteger: '4', animation: 'idle' }), 1600 )  
-        // Not configured - when using, adjust accordingly
-    }
-
-    updateActionJump = ( frames , action ) => {
-
-        this.setState({ frameInteger: frames , animation: action })
-        /* After 4800ms, reset to idle */
-        setTimeout( () => this.setState({ frameInteger: '4', animation: 'idle' }), 4700 )  
+        
+        /* 
+        The 'timeout' argument is the amount of miliseconds that
+        */
+        setTimeout( () => this.setState({ frameInteger: returnToFrame, animation: returnToAction }), timeout )  
 
     }
     
@@ -169,25 +148,26 @@ class Home extends React.Component {
 
                 </header>
                 
-                
-                <Controls 
-                    updateActionJump={this.updateActionJump}
-                    updateActionKo={this.updateActionKo}
-                    updateAction4={this.updateAction4}
-                    updateAction6={this.updateAction6} 
-                />
-                {/* 
-                    * FOR INSTRUCTIONS ON CRITTER ANIMATION USAGE * 
-                    *      CHECK THE CORRESPONDING .css FILE.     * 
+                <div id="critterContainer">
                     
-                    eg. DudeCritter.css 
-                */}
+                    {/* 
+                        * FOR INSTRUCTIONS ON CRITTER ANIMATION USAGE * 
+                        *      CHECK THE CORRESPONDING .css FILE.     * 
+                        
+                        eg. DudeCritter.css 
+                    */}
 
-                <CritterType 
-                    species={this.state.critterSpecies}
-                    frame={this.state.frameInteger}
-                    action={this.state.animation}    
-                />
+                    <CritterType 
+                        species={this.state.critterSpecies}
+                        frame={this.state.frameInteger}
+                        action={this.state.animation}    
+                    />
+
+                    <Controls 
+                        updateAction={this.updateAction}
+                    />
+
+                </div>
 
                 {/* Routes to the various pages */}
                     {/* change below */}
