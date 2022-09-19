@@ -58,7 +58,7 @@ class Home extends React.Component {
             */ 
     };
 
-    updateAction = ( frames , action ) => {
+    updateAction4 = ( frames , action ) => {
 
         this.setState({ frameInteger: frames , animation: action })
         /* After 4800ms, reset to idle */
@@ -66,7 +66,30 @@ class Home extends React.Component {
 
     }
 
+    updateAction6 = ( frames , action ) => {
 
+        this.setState({ frameInteger: frames , animation: action })
+        /* After 4800ms, reset to idle */
+        setTimeout( () => this.setState({ frameInteger: '6', animation: 'idle' }), 4800 )  
+
+    }
+
+    updateActionKo = ( frames , action ) => {
+
+        this.setState({ frameInteger: frames , animation: action })
+        /* After 1600ms, reset to idle */
+        setTimeout( () => this.setState({ frameInteger: '8', animation: 'idle' }), 1600 )  
+
+    }
+
+    updateActionJump = ( frames , action ) => {
+
+        this.setState({ frameInteger: frames , animation: action })
+        /* After 4800ms, reset to idle */
+        setTimeout( () => this.setState({ frameInteger: '8', animation: 'idle' }), 4800 )  
+
+    }
+    
 
     // function to run on component mounting
     componentDidMount(){
