@@ -30,9 +30,10 @@ class Home extends React.Component {
         currentUser: undefined,
 
         /* 
-        TODO set when a user is logged in
+        TODO set when a user is logged in:
+        set.state.criterSpecies to User's Critter species
         */ 
-       
+
         critterSpecies: 'dude',
         frameInteger: '4',
         animation:'idle'
@@ -143,6 +144,7 @@ class Home extends React.Component {
                     
                     eg. DudeCritter.css 
                 */}
+
                 <CritterType 
                     species={this.state.critterSpecies}
                     frame={this.state.frameInteger}

@@ -18,28 +18,28 @@ class PinkCritterAnimations extends React.Component {
             <div>
                 <h3> Animations for Pink Critter </h3>
                 
-                <div className="pinkFourFramesViewbox pixelArt" >
+                <div className="pink4FramesViewbox pixelArt" >
                     <img src={pink4frames} alt="character" 
                     className="
                     idle
-                    pinkFourFramesSpriteSheet
+                    pink4FramesSpriteSheet
                     pixelArt"/>
                 </div>
 
-                <div className="pinkSixFramesViewbox pixelArt">
+                <div className="pink6FramesViewbox pixelArt">
                     <img src={pink6frames} alt="character"
                     className="
                     walking
-                    pinkSixFramesSpriteSheet 
+                    pink6FramesSpriteSheet 
                     pixelArt
                     "/>
                 </div>
 
-                <div className="pinkEightFramesViewbox pixelArt">
+                <div className="pink8FramesViewbox pixelArt">
                     <img src={pink8frames} alt="character" 
                     className="
                     jump
-                    pinkEigthFramesSpriteSheet
+                    pink8FramesSpriteSheet
                     pixelArt
                     "/>
                 </div>

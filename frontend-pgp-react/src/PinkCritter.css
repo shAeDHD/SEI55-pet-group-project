@@ -96,7 +96,7 @@ class DudeCritterAnimations extends React.Component {
     animation: moveSpriteSheet 1.2s steps(6) infinite;
     width: calc(128px * var(--pixel-size-six));
     position: absolute;
-    left: -15px;
+    left: 0px;
     
 }
 
@@ -142,7 +142,7 @@ class DudeCritterAnimations extends React.Component {
     animation: moveSpriteSheet 1.6s steps(8) infinite;
     width: calc(128px * var(--pixel-size-eight));
     position: absolute;
-    left: -5px;
+    left: 0px;
     
 }
 
