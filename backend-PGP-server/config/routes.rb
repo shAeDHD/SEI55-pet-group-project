@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   post '/user/signup' => 'users#create'
 
-
+  get '/pets/current' => 'pets#current'
   # get '/pet/new' => 'pets#new'
 
   # get '/pet/index' => 'pets#index'
