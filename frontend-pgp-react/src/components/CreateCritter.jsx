@@ -128,7 +128,7 @@ class CreateCritter extends React.Component{
         return (
 
             <div className="Create">
-                <h1>Create your own Criiter</h1>
+                <h1>Create your own Critter</h1>
 
                 <div className={`${this.state.species}FramesViewbox pixelArt`} >
                 <img src={this.renderSelection[this.state.species]}alt="character" 
