@@ -11,6 +11,8 @@ class PetsController < ApplicationController
   # Render current Pet information on My Profile page
   def current
 
+
+
   end
 
   def new

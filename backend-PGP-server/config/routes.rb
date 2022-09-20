@@ -15,6 +15,9 @@ Rails.application.routes.draw do
 
   post '/user/signup' => 'users#create'
 
+  #pets current route
+  get '/pets/current' => 'pets#current'
+
 
   # get '/pet/new' => 'pets#new'
 
