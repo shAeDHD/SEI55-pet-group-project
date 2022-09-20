@@ -91,10 +91,18 @@ class PetsController < ApplicationController
   def update_last_action
     #   post '/pets/:id/action/:action' => 'pets#update_last_action'
     pet = Pet.find params[:id]
+    
     if params[:action] == 'feed'
       pet.update last_fed: Time.now
     
+    elsif params[:action] == 'drink'
+      pet.update last_drank: Time.now
+    
+    else
+      pet.update experience: (Pet.experience - 50)  
+      
     end
+
     render json: pet 
   end
 
