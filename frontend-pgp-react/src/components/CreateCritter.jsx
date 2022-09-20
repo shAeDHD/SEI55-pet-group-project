@@ -98,28 +98,29 @@ class CreateCritter extends React.Component{
                 last_drank:this.state.last_drank
             })
             .then(result => {
-                localStorage.setItem("jwt", result.data.token.token)
+                // localStorage.setItem("jwt", result.data.token.token)
 
-                console.log("jwt", result.data.token.token);
-                // set axios default headers to have an authorization key
-                axios.defaults.headers.common['Authorization'] = 'Bearer ' + result.data.token.token;
-                // call the function setCurrentUser that was passed in as a prop so that we can set the current user in Home
+                // console.log("jwt", result.data.token.token);
+                // // set axios default headers to have an authorization key
+                // axios.defaults.headers.common['Authorization'] = 'Bearer ' + result.data.token.token;
+                // // call the function setCurrentUser that was passed in as a prop so that we can set the current user in Home
                 // this.props.setCurrentUser();
                 // redirec the url of the page to /my_profile so we can load the MyProfile component
                 this.props.history.push('/my_profile');
             })
 
             console.log(submitNewPet);
-        
-        }
-
-        catch(err){
+        } catch(err){
+            // TODO: add error validation if a missing field
             this.setState({
                 loading: false, 
                 error: err
             })
 
         }
+
+
+       
 
     }
 
@@ -153,13 +154,13 @@ class CreateCritter extends React.Component{
                     ${this.state.species3}FramesSpriteSheet
                     pixelArt`}/>
                 </div> */}
-
-                <br /><br />
-                <form onSubmit = {this.submitNewCritter}>
                 <br /><br />
                 <button onClick={this.submitLeft} className="left">Left</button>
                 <button onClick={this.submitRight} className="right">Right</button>
                 <br /><br />
+                <br /><br />
+                <form onSubmit = {this.submitNewCritter}>
+               
                 <input
                 onChange={this.critterName}
                 name="name"
