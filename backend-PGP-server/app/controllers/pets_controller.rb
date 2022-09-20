@@ -10,6 +10,7 @@ class PetsController < ApplicationController
 
   # Render current Pet information on My Profile page
   def current
+    render json: current_pet
 
 
 
@@ -17,6 +18,18 @@ class PetsController < ApplicationController
 
   def new
     @pet = Pet.new
+    pet = Pet.create!(
+      name: params[:name],
+      age: params[:age],
+      species: params[:species],
+      level: params[:level],
+      experience: params[:experience]
+    )
+    if pet.persisted?
+      render json: pet
+    else
+      render json: { error: 'Count not create pet' }, status: 422
+    end
   end
 
   def create
@@ -54,7 +67,7 @@ class PetsController < ApplicationController
   # end
 
   def index
-    
+    render json: Pet.all
     @pets = Pet.all
 
   end # index

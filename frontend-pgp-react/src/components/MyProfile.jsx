@@ -12,6 +12,19 @@ class MyProfile extends React.Component{
     
     currentUser: [],
     currentPet: [],
+    // currentUser: {
+    //   name: '',
+    //   display_name: '',
+    //   email: ''
+    // },
+    // currentUserPet: {
+    //   name: '',
+    //   age: '',
+    //   species: '',
+    //   level: '',
+    //   experience: '',
+
+    // }
   }
 
   // Mount the data
@@ -85,6 +98,9 @@ class MyProfile extends React.Component{
       <div>
         <h1>Hello {this.state.currentUser}</h1>
         <h3>{this.state.currentUser}</h3>
+        {/* <h1>Hello {this.state.currentUser.name}</h1>
+        <h3>{this.state.currentUser.display_name}</h3>
+        <h1>Hello {this.state.currentUserPet.age}</h1> */}
       </div>
     );
   }//render

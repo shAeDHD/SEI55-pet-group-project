@@ -11,11 +11,11 @@ import MyProfile from './MyProfile';
 import axios from 'axios';
 
 
-import CritterComponents from './CritterComponents';
 
 // -------- Critter Related Imports ------------ //
-
 import CreateCritter from './CreateCritter';
+
+import CritterComponents from './CritterComponents';
 import FeedAndDrink from './FeedAndDrink'
 // --------------------------------------------- //
 
@@ -34,68 +34,7 @@ class Home extends React.Component {
         // define current user
         currentUser: undefined,
 
-        /* 
-        TODO set when a user is logged in:
-        set.state.criterSpecies to User's Critter species
-        */ 
-
-        // critterSpecies: 'dude',
-        // frameInteger: '4',
-        // animation:'idle'
-
-        /* 
-        ** AVAILABLE ANIMATIONS **
-            frameInteger:       '4'      
-                'punch'      
-                'climbing'   
-                'hurt'       
-                'idle'       
-                'throwStone' 
-            frameInteger:       '6'
-                'oneTwoCombo'
-                'runHug'
-                'sprint'
-                'walking'
-                'walkPunchWalk'
-            frameInteger:       '8'
-                'ko'
-                'jump'    
-            */ 
-
     };
-
-
-    // CritterAnimationTesting= () => {
-
-    //     return(
-      
-    //       <div>
-    //         <CritterType 
-    //             species={this.state.critterSpecies}
-    //             frame={this.state.frameInteger}
-    //             action={this.state.animation}    
-    //         />
-    //         <Controls 
-    //             updateAction={this.updateAction}
-    //         />   
-            
-    //       </div>
-      
-    //     )
-      
-    // }
-
-    // updateAction = ( frames , action, timeout,  returnToFrame, returnToAction ) => {
-
-    //     this.setState({ frameInteger: frames , animation: action })
-        
-    //     /* 
-    //     The 'timeout' argument is the amount of miliseconds that
-    //     */
-    //     setTimeout( () => this.setState({ frameInteger: returnToFrame, animation: returnToAction }), timeout )  
-
-    // }
-    
 
     // function to run on component mounting
     componentDidMount(){
@@ -191,26 +130,6 @@ class Home extends React.Component {
 
                 </header>
                 
-                <div id="critterContainer">
-                    
-                    {/* 
-                        * FOR INSTRUCTIONS ON CRITTER ANIMATION USAGE * 
-                        *      CHECK THE CORRESPONDING .css FILE.     * 
-                        
-                        eg. DudeCritter.css 
-                    */}
-
-                    {/* <CritterType 
-                        species={this.state.critterSpecies}
-                        frame={this.state.frameInteger}
-                        action={this.state.animation}    
-                    />
-
-                    <Controls 
-                        updateAction={this.updateAction}
-                    /> */}
-
-                </div>
 
                 <br /><br />
 
