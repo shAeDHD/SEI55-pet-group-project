@@ -36,12 +36,14 @@ puts User.pluck( :name).join( ', ' )
 
 ################################################
 
+# Set species to have three different types including owlet, dude and pink
+
 Pet.destroy_all
 
 Pet.create!(
     name: "Mo",
     age: 89,
-    species: "blob",
+    species: "owlet",
     accessories: true,
     level: 1,
     experience: 5
@@ -52,7 +54,7 @@ Pet.create!(
 Pet.create!(
     name: "Shae",
     age: 5,
-    species: "ghost",
+    species: "pink",
     accessories: false,
     level: 2,
     experience: 50
@@ -63,7 +65,7 @@ Pet.create!(
 Pet.create!(
     name: "Craig",
     age: 205,
-    species: "creature-3",
+    species: "dude",
     accessories: true,
     level: 20,
     experience: 80
@@ -74,7 +76,7 @@ Pet.create!(
 Pet.create!(
     name: "Wen",
     age: 20,
-    species: "creature-4",
+    species: "dude",
     accessories: true,
     level: 8,
     experience: 10
@@ -87,7 +89,7 @@ puts "create #{ Pet.count } pets."
 #############################
 
 puts "Creating Moves"
-Move.destroy_all 
+# Move.destroy_all 
 
 Move.create!(
 
