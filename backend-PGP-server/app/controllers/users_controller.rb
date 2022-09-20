@@ -11,6 +11,7 @@ class UsersController < ApplicationController
 
   #  before_action :authenticate_user
 
+  # Render current user information on My Profile page
    def current
      render json: current_user
    end
