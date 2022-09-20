@@ -70,7 +70,7 @@ class Controls extends React.Component {
             
             '6',
             'walkPunchWalk',
-            1200, 
+            3800, 
             '4',
             'idle'            
 
@@ -80,20 +80,6 @@ class Controls extends React.Component {
         
     } // critterWalkPunchWalk
 
-    critterHurt = () => {
-
-        this.props.updateAction(
-
-            '4',
-            'hurt',
-            800, 
-            '4',
-            'idle'
-
-        )
-
-    } // critterHurt
-
 
     critterWalk = () => {
 
@@ -101,16 +87,87 @@ class Controls extends React.Component {
 
             '6',
             'walking',
-            1200, 
+            1600, 
             '6',
             'walking'
 
         )
 
+        console.log(`Critter walking`);
+
+
     } // critterWalk
 
 
-    critterStand = () => [
+    critterSprint = () => {
+
+        this.props.updateAction(
+
+            '6',
+            'sprint',
+            3600, 
+            '4',
+            'idle',
+
+        )
+
+        console.log(`Critter sprinting`);
+
+    } // critterStand
+
+
+    critterRunHug = () => {
+
+        this.props.updateAction(
+
+            '6',
+            'runHug',
+            3600, 
+            '4',
+            'idle',
+
+        )
+
+        console.log(`Critter coming for creepy hug`);
+
+    } // critterRunHug
+
+
+    critterOneTwoCombo = () => {
+
+        this.props.updateAction(
+
+            '6',
+            'oneTwoCombo',
+            1600, 
+            '4',
+            'idle',
+
+        )
+
+        console.log(`Critter one two punched`);
+
+    } // critterOneTwoCombo
+
+    
+    critterThrowStone = () => {
+
+        this.props.updateAction(
+
+            '4',
+            'throwStone',
+            800, 
+            '4',
+            'idle',
+
+        )
+
+        console.log(`Critter threw a stone`);
+
+    } // critterThrowStone
+
+    
+    critterStand = () => {
 
         this.props.updateAction(
 
@@ -121,7 +178,62 @@ class Controls extends React.Component {
             'idle',
 
         )
-    ] // critterStand
+
+        console.log(`Critter standing`);
+
+    } // critterStand - 'idle'
+
+
+    critterHurt = () => {
+
+        this.props.updateAction(
+
+            '4',
+            'hurt',
+            1600, 
+            '4',
+            'idle'
+
+        )
+
+        console.log(`Critter took damage`);
+
+    } // critterHurt
+
+
+    critterClimbing = () => {
+
+        this.props.updateAction(
+
+            '4',
+            'climbing',
+            3600, 
+            '4',
+            'idle',
+
+        )
+
+        console.log(`Critter climbing`);
+
+    } // critterClimbing
+
+
+    critterPunch = () => {
+
+        this.props.updateAction(
+
+            '4',
+            'punch',
+            1600, 
+            '4',
+            'idle',
+
+        )
+
+        console.log(`Critter punched!`);
+
+    } // critterPunch
+
 
 
     /* -------------------------------------- */
@@ -149,18 +261,48 @@ class Controls extends React.Component {
                     </button>
 
                     <button className="critterButton" 
-                    onClick={this.critterHurt}>
-                        Hurt
-                    </button>
-
-                    <button className="critterButton" 
                     onClick={this.critterWalk}>
                         Walk
                     </button>
                     
                     <button className="critterButton" 
+                    onClick={this.critterSprint}>
+                        Sprint
+                    </button>
+
+                    <button className="critterButton" 
+                    onClick={this.critterRunHug}>
+                        Run and Hug
+                    </button>
+
+                    <button className="critterButton" 
+                    onClick={this.critterOneTwoCombo}>
+                        One-Two Combo
+                    </button>
+
+                    <button className="critterButton" 
+                    onClick={this.critterThrowStone}>
+                        Throw Stone
+                    </button>
+
+                    <button className="critterButton" 
                     onClick={this.critterStand}>
                         Stand
+                    </button>
+
+                    <button className="critterButton" 
+                    onClick={this.critterHurt}>
+                        Hurt
+                    </button>
+
+                    <button className="critterButton" 
+                    onClick={this.critterClimbing}>
+                        Climb
+                    </button>
+
+                    <button className="critterButton" 
+                    onClick={this.critterPunch}>
+                        Punch
                     </button>
 
                 </div>
