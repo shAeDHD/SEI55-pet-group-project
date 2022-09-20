@@ -73,6 +73,16 @@ class PetsController < ApplicationController
     
   end # destroy
 
+  def update_last_action
+    #   post '/pets/:id/action/:action' => 'pets#update_last_action'
+    pet = Pet.find params[:id]
+    if params[:action] == 'feed'
+      pet.update last_fed: Time.now
+    
+    end
+    render json: pet 
+  end
+
   #######################################
   private
 
