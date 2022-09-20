@@ -34,7 +34,11 @@ class CreateCritter extends React.Component{
         error: null
 
     }
-
+    
+    componentDidMount(){
+        console.log("currentuser:", this.props.currentUser)
+        
+    }
 
     renderSelection = {
 
@@ -193,7 +197,7 @@ class CreateCritter extends React.Component{
                 placeholder='Enter Pet Name'
                 />
                 <br /><br />
-                <button className="select">Select Critter</button>
+                <button onClick = {this.submitNewCritter}className="select">Select Critter</button>
                 </form>
 
             </div>

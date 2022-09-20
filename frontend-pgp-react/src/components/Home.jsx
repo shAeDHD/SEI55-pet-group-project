@@ -32,7 +32,7 @@ class Home extends React.Component {
     state ={
 
         // define current user
-        currentUser: undefined,
+        currentUser: null,
 
     };
 
@@ -48,21 +48,20 @@ class Home extends React.Component {
     // function to set the state of the current logged in user
     setCurrentUser = () => {
 
-        //declare there is a token which hold a json web token
-        let token = "Bearer" + localStorage.getItem("jwt");
-
-        // axios request back end and check if logged in and use token to validate
-        axios.get(`${BASE_BACKEND_URL}/users/current`, {
-            headers: {
-                'Authorization': token
-            }
-        })
-
-        // if token validates set the state of current user
-        .then(res => {
-            this.setState({currentUser: res.data})
-        })
-        .catch(err => console.warn(err))
+        // set the token value - authenication 
+    let token = "Bearer " + localStorage.getItem("jwt");
+    // axios get request 
+    axios.get(`${BASE_BACKEND_URL}/users/current`, {
+      headers: {
+        'Authorization': token
+      }
+    })
+    // successful load gets res data and sets it to current user
+    .then(res => {
+      this.setState({currentUser: res.data})
+      console.log("home:", res.data);
+    })
+    .catch(err => console.warn(err))
 
     };
 
@@ -136,10 +135,12 @@ class Home extends React.Component {
 
                 {/* Routes to the various pages */}
                     {/* change below */}
-               
-                    <Route exact path="/createcritter" component={CreateCritter}/>
-
-                    <Route exact path="/my_profile" component={MyProfile}/>
+                    {this.state.currentUser &&
+                    <Route exact path="/createcritter" render={() => 
+                    <CreateCritter currentUser ={this.state.currentUser}/>}/>}
+                    {this.state.currentUser &&
+                    <Route exact path="/my_profile" render={() => 
+                    <MyProfile currentUser ={this.state.currentUser}/>}/>}
 
                     <Route exact path='/login' render={(props) => <Login setCurrentUser={this.setCurrentUser}{...props}/>}/>
 
