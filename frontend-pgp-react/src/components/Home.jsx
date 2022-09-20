@@ -133,7 +133,7 @@ class Home extends React.Component {
                         )
                     }
                  
-                    <h1>We shall decide</h1>
+                    <h1>Digi-Me</h1>
                     <nav>
                     {/* Links to various pages */}
                     <Link to="/">Home</Link>
@@ -172,19 +172,20 @@ class Home extends React.Component {
                 </div>
                 {/* Below needs to be rendered on the create page didnt work so will render here for now */}
                 <br /><br />
-                <div className='createcritter'>
-                    <CreateCritter />
 
-                </div>
 
                 {/* Routes to the various pages */}
                     {/* change below */}
                     {/* <Route exact path="/" component={SignUp}/> */}
                     {/* <Route exact path="/signup" component={SignUp}/> */}
-                    <Route exact path="/createcriiter" component={CreateCritter}/>
+                    <Route exact path="/createcritter" component={CreateCritter}/>
+
                     <Route exact path="/my_profile" component={MyProfile}/>
+
                     <Route exact path='/login' render={(props) => <Login setCurrentUser={this.setCurrentUser}{...props}/>}/>
+
                     <Route exact path='/signup' render={(props) => <SignUp setCurrentUser={this.setCurrentUser}{...props}/>}/>
+
                     <Route exact path="/users" component={User}/>
                     {/* <Route exact path="/accessories" component={Accessories}/> */}
                     {/* <Route exact path="/pet" component={Pet}/> */}
