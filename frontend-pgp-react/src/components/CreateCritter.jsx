@@ -10,7 +10,9 @@ const BASE_CREATECRITTER_URL = 'http://localhost:3000'
 // species3: 'owlet4',
 
 class CreateCritter extends React.Component{
+
     state = {
+
         currentUser: '',
         // frame: '4',
         // action: 'idle',
@@ -30,15 +32,20 @@ class CreateCritter extends React.Component{
         last_drank: 0, 
         loading: true,
         error: null
+
     }
 
+
     renderSelection = {
+
         'dude4': dude4,
         'pink4': pink4,
         'owlet4': owlet4,
+
     }
 
     count = () => {
+
         if (this.state.clickCount == 0){
             this.setState ({species: "pink4"});
             console.log('pink4', this.state.species);
@@ -49,9 +56,11 @@ class CreateCritter extends React.Component{
             this.setState ({species: "owlet4"});
             console.log('owlet4', this.state.species);
         }
+
     };
 
     submitLeft = () =>{
+
         console.log('left click');
         if (this.state.clickCount <= 0){
             return
@@ -59,9 +68,11 @@ class CreateCritter extends React.Component{
             this.state.clickCount --
             this.count();
         }
+
     };
 
     submitRight = () =>{
+
         console.log('right click');
         if (this.state.clickCount >= 2){
             return
@@ -69,15 +80,18 @@ class CreateCritter extends React.Component{
             this.state.clickCount ++
             this.count();
         }
+
     };
 
     critterName = (ev) => {
         
         this.setState({name: ev.target.value});
         console.log('name:', ev.target.value)
+        
     };
 
-    // submit new users speciy selection
+    
+    // submit new users specify selection
     submitNewCritter = async (ev) => {
 
         console.log('new user species', this.state.species);
@@ -85,7 +99,10 @@ class CreateCritter extends React.Component{
         ev.preventDefault();
 
         try{
-            const submitNewPet = await axios.post(`${BASE_CREATECRITTER_URL}/pets`, {
+
+            const submitNewPet = await axios.post(
+
+                `${BASE_CREATECRITTER_URL}/pets`, {
                 name:this.state.name,
                 age:this.state.age,
                 level:this.state.level,
@@ -96,6 +113,7 @@ class CreateCritter extends React.Component{
                 last_slept:this.state.last_slept, 
                 last_stretched:this.state.last_stretched,
                 last_drank:this.state.last_drank
+
             })
             .then(result => {
                 // localStorage.setItem("jwt", result.data.token.token)
@@ -107,6 +125,7 @@ class CreateCritter extends React.Component{
                 // this.props.setCurrentUser();
                 // redirec the url of the page to /my_profile so we can load the MyProfile component
                 this.props.history.push('/my_profile');
+                
             })
 
             console.log(submitNewPet);
@@ -129,16 +148,22 @@ class CreateCritter extends React.Component{
         return (
 
             <div className="Create">
-                <h1>Create your own Criiter</h1>
+                
+                <h1>Create your own Critter</h1>
 
                 <div className={`${this.state.species}FramesViewbox pixelArt`} >
-                <img src={this.renderSelection[this.state.species]}alt="character" 
-                    className={`
-                    idle
-                    ${this.state.species}FramesSpriteSheet
-                    pixelArt`}/>
+
+                    <img src={this.renderSelection[this.state.species]} alt="character" 
+                        className={`
+                        
+                            idle
+                            ${this.state.species}FramesSpriteSheet
+                            pixelArt`
+
+                        }/>
                 </div>
                 <br />
+
                 {/* <div className="dude4FramesViewbox pixelArt" >
                     <img src={dude4frames} alt="character" 
                     className={`
@@ -170,17 +195,20 @@ class CreateCritter extends React.Component{
                 <br /><br />
                 <button className="select">Select Critter</button>
                 </form>
+
             </div>
 
-// 'idle',
-// '4',
-// 'idle',
-// 800
+                // 'idle',
+                // '4',
+                // 'idle',
+                // 800
 
         ) // return
 
+
     } // render
+
 
 }
 
-export default CreateCritter
+export default CreateCritter;

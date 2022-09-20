@@ -27,6 +27,7 @@ class Home extends React.Component {
 
     // home states
     state ={
+
         // define current user
         currentUser: undefined,
 
@@ -57,9 +58,11 @@ class Home extends React.Component {
                 'ko'
                 'jump'    
             */ 
+
     };
 
-    updateAction = ( frames , action, returnToFrame, returnToAction, timeout ) => {
+
+    updateAction = ( frames , action, timeout,  returnToFrame, returnToAction ) => {
 
         this.setState({ frameInteger: frames , animation: action })
         
@@ -73,48 +76,55 @@ class Home extends React.Component {
 
     // function to run on component mounting
     componentDidMount(){
+
         // loads when the page loads so it passes this function
         this.setCurrentUser();
 
     };
 
+
     // function to set the state of the current logged in user
     setCurrentUser = () => {
+
         //declare there is a token which hold a json web token
         let token = "Bearer" + localStorage.getItem("jwt");
+
         // axios request back end and check if logged in and use token to validate
         axios.get(`${BASE_BACKEND_URL}/users/current`, {
             headers: {
                 'Authorization': token
             }
         })
+
         // if token validates set the state of current user
         .then(res => {
             this.setState({currentUser: res.data})
         })
         .catch(err => console.warn(err))
+
     };
+
 
     // function to handle the logging user out
     handleLogout = () => {
+
         // Set our state of current user to undefined.
         this.setState({currentUser: undefined});
         // Remove the jwt token from our local storage
         localStorage.removeItem("jwt");
         // Set our axios default headers to undefined.
         axios.defaults.headers.common['Authorization'] = undefined;
+
     };
 
     render(){
 
-  
-
-
-
         return (
+            
             <div className="App"> 
             <Router>
                 <header>
+
                     {/* Showing on nav bar login/sign-up requests with if statement */}
                     {
                         this.state.currentUser !== undefined
@@ -131,6 +141,7 @@ class Home extends React.Component {
                             <h4><Link to='/login'>Login</Link>{' '}|{' '}<Link to='/signup'>Sign Up</Link></h4>
                             </div>
                         )
+
                     }
                  
                     <h1>Digi-Me</h1>
@@ -187,18 +198,21 @@ class Home extends React.Component {
                     <Route exact path='/signup' render={(props) => <SignUp setCurrentUser={this.setCurrentUser}{...props}/>}/>
 
                     <Route exact path="/users" component={User}/>
+
                     {/* <Route exact path="/accessories" component={Accessories}/> */}
                     {/* <Route exact path="/pet" component={Pet}/> */}
                   <hr />
+
                   &copy; Critters.Co.2022
             </Router>
             </div>
  
         ); // return
 
+
     } // render
 
 
 } // Home 
 
-export default Home
+export default Home;

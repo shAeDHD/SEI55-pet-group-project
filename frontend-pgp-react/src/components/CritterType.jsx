@@ -12,6 +12,7 @@ import owlet4 from "../assets/owletMonster/fourFrames_owlet.png";
 import owlet6 from "../assets/owletMonster/sixFrames_owlet.png";
 import owlet8 from "../assets/owletMonster/eightFrames_owlet.png";
 
+
 class CritterType extends React.Component {
 
     state={
@@ -19,6 +20,7 @@ class CritterType extends React.Component {
     }
 
     renderCritter = {
+
         /*
          This Object is used to turn 
         the interpolated string into a variable in order to import the correct spritesheet. 
@@ -42,13 +44,20 @@ class CritterType extends React.Component {
     render (){
         
         return(
+
             <div className={`${this.props.species}${this.props.frame}FramesViewbox pixelArt`} id="viewContainer" >
+
                 <img src={this.renderCritter[this.props.species+this.props.frame]} alt="character" 
                 className={`
-                ${this.props.action}
-                ${this.props.species}${this.props.frame}FramesSpriteSheet
-                pixelArt`}/>
+
+                    ${this.props.action}
+                    ${this.props.species}${this.props.frame}FramesSpriteSheet
+                    pixelArt`
+
+                }/>
+
             </div>
+
         );
                 
     } // render

@@ -16,53 +16,64 @@ class Controls extends React.Component {
     /* 
     ******    'updateAction()' arguments     ******
         
-        firstArg = frameInteger of first action,
+        firstArg = frameInteger of first action
         
-        secondArg = first action, 
+        secondArg = first action 
         
-        thirdArg = frameInteger of second action,
+        thirdArg = time between change from first to second action 
         
-        fourthArg = second action, 
+        fourthArg = second action 
         
-        fifthArg = time between change from first to second action 
+        fifthArg = frameInteger of second action
     */
     /* -------------------------------------- */
+
     critterJump = () => {
+
         this.props.updateAction( 
+            
             '8', 
-            'jump', 
+            'jump',
+            4800,  
             '4', 
-            'idle', 
-            4800 
+            'idle' 
+             
         )
         
         console.log(`Critter jumped`);
         
     } // critterJump
 
+
     critterKo = () => {
+
         // NOTE: this function is not configured,
         //       adjust settings as required.
         this.props.updateAction(
+            
             '8', 
             'ko',  
+            1600, 
             '4', 
-            'idle', 
-            1600 
+            'idle'  
+
         )
         
         console.log(`Critter KO'd!`);
         
     } // critterKO
 
+
     critterWalkPunch = () => {
         
         this.props.updateAction(
+            
             '6',
             'walkPunchWalk',
+            1200, 
             '4',
-            'idle',
-            1200
+            'idle'            
+
         )
         
         console.log(`Critter walked and punched!`);
@@ -72,42 +83,53 @@ class Controls extends React.Component {
     critterHurt = () => {
 
         this.props.updateAction(
+
             '4',
             'hurt',
+            800, 
             '4',
-            'idle',
-            800
+            'idle'
+
         )
+
     } // critterHurt
+
 
     critterWalk = () => {
 
         this.props.updateAction(
+
             '6',
             'walking',
+            1200, 
             '6',
-            'walking',
-            1200
+            'walking'
+
         )
 
     } // critterWalk
 
+
     critterStand = () => [
 
         this.props.updateAction(
+
             '4',
             'idle',
+            800, 
             '4',
             'idle',
-            800
+
         )
     ] // critterStand
+
 
     /* -------------------------------------- */
     render (){
 
 
         return(
+
             <div>
                 
                 <div className="critterButtonContainer">
@@ -140,9 +162,11 @@ class Controls extends React.Component {
                     onClick={this.critterStand}>
                         Stand
                     </button>
+
                 </div>
 
             </div>
+            
         );
 
 
