@@ -9,19 +9,22 @@ import Login from './Login';
 import SignUp from './SignUp';
 import MyProfile from './MyProfile';
 import axios from 'axios';
-import Controls from './Controls';
+
+
+import CritterComponents from './CritterComponents';
 
 // -------- Critter Related Imports ------------ //
-import DudeCritterAnimations from './DudeCritterAnimations.jsx';
-import OwletCritterAnimations from './OwletCritterAnimations.jsx';
-import PinkCritterAnimations from './PinkCritterAnimations.jsx';
-import CritterType from './CritterType';
-import CreateCritter from './CreateCritter';
 
+import CreateCritter from './CreateCritter';
+import FeedAndDrink from './FeedAndDrink'
 // --------------------------------------------- //
 
 // backend url
 const BASE_BACKEND_URL = 'http://localhost:3000';
+
+// This function combines CritterType & Controls for use
+//      in a seperate route link
+
 
 class Home extends React.Component {
 
@@ -36,11 +39,11 @@ class Home extends React.Component {
         set.state.criterSpecies to User's Critter species
         */ 
 
-        critterSpecies: 'dude',
-        frameInteger: '4',
-        animation:'idle'
+        // critterSpecies: 'dude',
+        // frameInteger: '4',
+        // animation:'idle'
 
-         /* 
+        /* 
         ** AVAILABLE ANIMATIONS **
             frameInteger:       '4'      
                 'punch'      
@@ -62,16 +65,36 @@ class Home extends React.Component {
     };
 
 
-    updateAction = ( frames , action, timeout,  returnToFrame, returnToAction ) => {
+    // CritterAnimationTesting= () => {
 
-        this.setState({ frameInteger: frames , animation: action })
+    //     return(
+      
+    //       <div>
+    //         <CritterType 
+    //             species={this.state.critterSpecies}
+    //             frame={this.state.frameInteger}
+    //             action={this.state.animation}    
+    //         />
+    //         <Controls 
+    //             updateAction={this.updateAction}
+    //         />   
+            
+    //       </div>
+      
+    //     )
+      
+    // }
+
+    // updateAction = ( frames , action, timeout,  returnToFrame, returnToAction ) => {
+
+    //     this.setState({ frameInteger: frames , animation: action })
         
-        /* 
-        The 'timeout' argument is the amount of miliseconds that
-        */
-        setTimeout( () => this.setState({ frameInteger: returnToFrame, animation: returnToAction }), timeout )  
+    //     /* 
+    //     The 'timeout' argument is the amount of miliseconds that
+    //     */
+    //     setTimeout( () => this.setState({ frameInteger: returnToFrame, animation: returnToAction }), timeout )  
 
-    }
+    // }
     
 
     // function to run on component mounting
@@ -156,6 +179,13 @@ class Home extends React.Component {
                     <Link to="/users">Users</Link>
                     {''} | {''}
                     <Link to="/createcritter">create</Link>
+                    <br />
+                    {'	'}|{'	'}
+                    <Link to="/foodTest">Food Animation Testing</Link>
+                    {'	'}|{'	'}
+                    <Link to="/animation_testing">Animation Testing</Link>
+                    {'	'}|{'	'}
+
                     <hr />
                     </nav>
 
@@ -170,7 +200,7 @@ class Home extends React.Component {
                         eg. DudeCritter.css 
                     */}
 
-                    <CritterType 
+                    {/* <CritterType 
                         species={this.state.critterSpecies}
                         frame={this.state.frameInteger}
                         action={this.state.animation}    
@@ -178,17 +208,16 @@ class Home extends React.Component {
 
                     <Controls 
                         updateAction={this.updateAction}
-                    />
+                    /> */}
 
                 </div>
-                {/* Below needs to be rendered on the create page didnt work so will render here for now */}
+
                 <br /><br />
 
 
                 {/* Routes to the various pages */}
                     {/* change below */}
-                    {/* <Route exact path="/" component={SignUp}/> */}
-                    {/* <Route exact path="/signup" component={SignUp}/> */}
+               
                     <Route exact path="/createcritter" component={CreateCritter}/>
 
                     <Route exact path="/my_profile" component={MyProfile}/>
@@ -199,8 +228,10 @@ class Home extends React.Component {
 
                     <Route exact path="/users" component={User}/>
 
-                    {/* <Route exact path="/accessories" component={Accessories}/> */}
-                    {/* <Route exact path="/pet" component={Pet}/> */}
+                    <Route exact path="/foodTest" component={FeedAndDrink}/>
+
+                    <Route exact path="/animation_testing" component={CritterComponents}/>
+              
                   <hr />
 
                   &copy; Critters.Co.2022
