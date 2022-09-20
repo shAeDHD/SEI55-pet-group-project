@@ -16,26 +16,28 @@ class Controls extends React.Component {
     /* 
     ******    'updateAction()' arguments     ******
         
-        firstArg = frameInteger of first action,
+        firstArg = frameInteger of first action
         
-        secondArg = first action, 
+        secondArg = first action 
         
-        thirdArg = frameInteger of second action,
+        thirdArg = time between change from first to second action 
         
-        fourthArg = second action, 
+        fourthArg = second action 
         
-        fifthArg = time between change from first to second action 
+        fifthArg = frameInteger of second action
     */
     /* -------------------------------------- */
 
     critterJump = () => {
 
         this.props.updateAction( 
+            
             '8', 
-            'jump', 
+            'jump',
+            4800,  
             '4', 
-            'idle', 
-            4800 
+            'idle' 
+             
         )
         
         console.log(`Critter jumped`);
@@ -51,9 +53,9 @@ class Controls extends React.Component {
             
             '8', 
             'ko',  
+            1600, 
             '4', 
-            'idle', 
-            1600 
+            'idle'  
 
         )
         
@@ -68,9 +70,9 @@ class Controls extends React.Component {
             
             '6',
             'walkPunchWalk',
+            1200, 
             '4',
-            'idle',
-            1200
+            'idle'            
 
         )
         
@@ -84,9 +86,9 @@ class Controls extends React.Component {
 
             '4',
             'hurt',
+            800, 
             '4',
-            'idle',
-            800
+            'idle'
 
         )
 
@@ -99,9 +101,9 @@ class Controls extends React.Component {
 
             '6',
             'walking',
+            1200, 
             '6',
-            'walking',
-            1200
+            'walking'
 
         )
 
@@ -114,9 +116,9 @@ class Controls extends React.Component {
 
             '4',
             'idle',
+            800, 
             '4',
             'idle',
-            800
 
         )
     ] // critterStand

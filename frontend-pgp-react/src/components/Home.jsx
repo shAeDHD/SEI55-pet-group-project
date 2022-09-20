@@ -62,7 +62,7 @@ class Home extends React.Component {
     };
 
 
-    updateAction = ( frames , action, returnToFrame, returnToAction, timeout ) => {
+    updateAction = ( frames , action, timeout,  returnToFrame, returnToAction ) => {
 
         this.setState({ frameInteger: frames , animation: action })
         
