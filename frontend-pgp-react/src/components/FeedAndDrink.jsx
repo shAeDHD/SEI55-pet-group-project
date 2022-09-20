@@ -51,6 +51,8 @@ class FeedAndDrink extends React.Component {
             // const res = await axios.post(`http://localhost:3000/pets/:${:pet_id}/action/feed`)
         
         } catch (error) {
+            
+            console.log(`error on feed`);
              
         }
 
@@ -64,6 +66,8 @@ class FeedAndDrink extends React.Component {
             // const res = await axios.post(`http://localhost:3000/pets/:${:pet_id}/action/drink`)
             
         } catch (error) {
+
+            console.log(`error on sweets`);
             
         }
         
