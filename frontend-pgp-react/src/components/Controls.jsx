@@ -27,7 +27,9 @@ class Controls extends React.Component {
         fifthArg = time between change from first to second action 
     */
     /* -------------------------------------- */
+
     critterJump = () => {
+
         this.props.updateAction( 
             '8', 
             'jump', 
@@ -40,29 +42,36 @@ class Controls extends React.Component {
         
     } // critterJump
 
+
     critterKo = () => {
+
         // NOTE: this function is not configured,
         //       adjust settings as required.
         this.props.updateAction(
+            
             '8', 
             'ko',  
             '4', 
             'idle', 
             1600 
+
         )
         
         console.log(`Critter KO'd!`);
         
     } // critterKO
 
+
     critterWalkPunch = () => {
         
         this.props.updateAction(
+            
             '6',
             'walkPunchWalk',
             '4',
             'idle',
             1200
+
         )
         
         console.log(`Critter walked and punched!`);
@@ -72,42 +81,53 @@ class Controls extends React.Component {
     critterHurt = () => {
 
         this.props.updateAction(
+
             '4',
             'hurt',
             '4',
             'idle',
             800
+
         )
+
     } // critterHurt
+
 
     critterWalk = () => {
 
         this.props.updateAction(
+
             '6',
             'walking',
             '6',
             'walking',
             1200
+
         )
 
     } // critterWalk
 
+
     critterStand = () => [
 
         this.props.updateAction(
+
             '4',
             'idle',
             '4',
             'idle',
             800
+
         )
     ] // critterStand
+
 
     /* -------------------------------------- */
     render (){
 
 
         return(
+
             <div>
                 
                 <div className="critterButtonContainer">
@@ -140,9 +160,11 @@ class Controls extends React.Component {
                     onClick={this.critterStand}>
                         Stand
                     </button>
+
                 </div>
 
             </div>
+            
         );
 
 

@@ -60,6 +60,7 @@ class CreateCritter extends React.Component{
     };
 
     submitLeft = () =>{
+
         console.log('left click');
         if (this.state.clickCount <= 0){
             return
@@ -67,9 +68,11 @@ class CreateCritter extends React.Component{
             this.state.clickCount --
             this.count();
         }
+
     };
 
     submitRight = () =>{
+
         console.log('right click');
         if (this.state.clickCount >= 2){
             return
@@ -77,12 +80,14 @@ class CreateCritter extends React.Component{
             this.state.clickCount ++
             this.count();
         }
+
     };
 
     critterName = (ev) => {
         
         this.setState({name: ev.target.value});
         console.log('name:', ev.target.value)
+        
     };
 
     
@@ -208,8 +213,8 @@ class CreateCritter extends React.Component{
 
 
     } // render
-    
+
 
 }
 
-export default CreateCritter
+export default CreateCritter;

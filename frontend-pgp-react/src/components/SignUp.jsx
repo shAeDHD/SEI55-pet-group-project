@@ -17,19 +17,24 @@ class SignUp extends React.Component{
 
     // handle typing in the form
     handleInput = (ev) => {
+        
         switch(ev.target.name){
+
             case 'name':
                 this.setState({name: ev.target.value})
                 // console.log("name:", ev.target.value);
                 break;
+
             case 'display_name':
                 this.setState({display_name: ev.target.value})
                 // console.log("display_name:", ev.target.value);
                 break;
+
             case 'email':
                 this.setState({email: ev.target.value})
                 // console.log("email:", ev.target.value);
                 break;
+
             case 'password':
                 this.setState({password: ev.target.value})
                 // console.log("password:", ev.target.value);
@@ -41,6 +46,7 @@ class SignUp extends React.Component{
 
     // handle submitting the form
     handleSubmit = async (ev) => {
+
         // // create a request object to send to knock
         // const request = {'name': this.state.name, 'display_name': this.state.display_name, 'email': this.state.email, 'password': this.state.password}
         // prevent reload
@@ -50,11 +56,16 @@ class SignUp extends React.Component{
 
         // Trying new method to post new user
         try{
-            const submitDeatils = await axios.post(`${BASE_SIGNUP_URL}/users`, {
+
+            const submitDeatils = await axios.post(`
+                
+                ${BASE_SIGNUP_URL}/users`, {
+
                 name:this.state.name,
                 display_name:this.state.display_name,
                 email:this.state.email,
                 password:this.state.password
+
             })
             // this.props.setCurrentUser();
             // this.props.history.push('/my_profile');
@@ -63,6 +74,7 @@ class SignUp extends React.Component{
             // // set state to render the page 
             // // sign-up page goes to home page
             .then(result => {
+
                 localStorage.setItem("jwt", result.data.token.token)
 
                 console.log("jwt", result.data.token.token);
@@ -72,6 +84,7 @@ class SignUp extends React.Component{
                 this.props.setCurrentUser();
                 // redirec the url of the page to /my_profile so we can load the MyProfile component
                 this.props.history.push('/my_profile');
+
             })
 
             console.log(submitDeatils);
@@ -86,10 +99,14 @@ class SignUp extends React.Component{
             // console.log('this.push', this.props.history.push)
         }
         catch(err){
+
             this.setState({
+
                 loading: false, 
                 error: err
+
             })
+
         }
 
 
@@ -109,9 +126,11 @@ class SignUp extends React.Component{
     render () {
 
         return(
-            <form onSubmit={this.handleSubmit}>
+
+          <form onSubmit={this.handleSubmit}>
             <label>Sign-Up Form</label>
             <br/>
+
             <input
               onChange={this.handleInput}
               name="name"
@@ -119,6 +138,7 @@ class SignUp extends React.Component{
               placeholder='Enter Name'
             />
             <br/>
+
             <input
               onChange={this.handleInput}
               name="display_name"
@@ -126,6 +146,7 @@ class SignUp extends React.Component{
               placeholder='Enter Display Name'
             />
             <br/>
+
             <input
               onChange={this.handleInput}
               name="email"
@@ -133,6 +154,7 @@ class SignUp extends React.Component{
               placeholder='Enter Email'
             />
             <br/>
+
             <input
               onChange={this.handleInput}
               name="password"
@@ -140,11 +162,18 @@ class SignUp extends React.Component{
               placeholder='Enter Password'
             />
             <br/>
+
             <button>Sign Up</button>
+
           </form>
 
         ); // return
-    } // render
-} // class
 
-export default SignUp
+
+    } // render
+
+
+} // class SignUp
+
+
+export default SignUp;

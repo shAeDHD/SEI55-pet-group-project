@@ -27,6 +27,7 @@ class Home extends React.Component {
 
     // home states
     state ={
+
         // define current user
         currentUser: undefined,
 
@@ -75,6 +76,7 @@ class Home extends React.Component {
 
     // function to run on component mounting
     componentDidMount(){
+
         // loads when the page loads so it passes this function
         this.setCurrentUser();
 
@@ -206,11 +208,11 @@ class Home extends React.Component {
             </div>
  
         ); // return
-        
+
 
     } // render
 
 
 } // Home 
 
-export default Home
+export default Home;
