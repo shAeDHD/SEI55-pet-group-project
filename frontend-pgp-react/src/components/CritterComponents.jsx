@@ -62,16 +62,19 @@ class CritterComponents extends React.Component {
 
 
         return(
-            <div>
-                <CritterType 
-                    species={this.state.critterSpecies}
-                    frame={this.state.frameInteger}
-                    action={this.state.animation}    
-                />
-
-                <Controls 
-                    updateAction={this.updateAction}
-                />
+            <div id="critterContainer">
+                <div id="viewContainer">
+                    <CritterType 
+                        species={this.state.critterSpecies}
+                        frame={this.state.frameInteger}
+                        action={this.state.animation}    
+                    />
+                </div>
+                <div className="critterButtonContainer">
+                    <Controls 
+                        updateAction={this.updateAction}
+                    />
+                </div>
             </div>
         );      // return()
 
