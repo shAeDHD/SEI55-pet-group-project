@@ -9,11 +9,12 @@ class UsersController < ApplicationController
 
   # Users controller the before_action what to put here
 
-  #  before_action :authenticate_user
+   before_action :authenticate_user
 
   # Render current user information on My Profile page
    def current
-     render json: current_user
+
+     render json: current_user, include: :pet 
    end
 
 
