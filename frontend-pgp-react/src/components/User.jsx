@@ -6,7 +6,7 @@ const RAILS_USER_BASE_URL = 'http://localhost:3000/users';
 
 class User extends React.Component{
 
-    
+
     state = {
 
         users: [],
@@ -67,7 +67,7 @@ class User extends React.Component{
                 {
                     this.state.users.map ( r => 
                     
-                    <li>
+                    <li key="user">
                     Name: {r.name} <br /> 
                     Display Name:{r.display_name} <br /> 
                     User ID: {r.user_id} <br />

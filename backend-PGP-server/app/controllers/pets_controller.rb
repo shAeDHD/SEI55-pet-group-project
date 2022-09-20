@@ -8,6 +8,11 @@ class PetsController < ApplicationController
   # should involve this before action 
   before_action :authenticate_user, except: [:index, :show]
 
+  # Render current Pet information on My Profile page
+  def current
+
+  end
+
   def new
     @pet = Pet.new
   end
