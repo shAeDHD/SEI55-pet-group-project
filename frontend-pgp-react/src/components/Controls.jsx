@@ -7,7 +7,7 @@ class Controls extends React.Component {
     /* -------------------------------------- */
     /*            *** INFO ***
         Each function below is tied to a
-        button. When its button is pressed,
+        button in render(). When its button is pressed,
         the function passes data back to the
         parent [Home.jsx] file, which is used by the updateAction function to change the value of key:value pairs in state={} to make the Critter perform a different animation/action.  
 
