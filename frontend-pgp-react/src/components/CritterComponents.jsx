@@ -4,10 +4,9 @@ import '../App.css'
 import DudeCritterAnimations from './DudeCritterAnimations.jsx';
 import OwletCritterAnimations from './OwletCritterAnimations.jsx';
 import PinkCritterAnimations from './PinkCritterAnimations.jsx';
-import CritterType from './CritterType';
-import CreateCritter from './CreateCritter';
-import FeedAndDrink from './FeedAndDrink'
 
+import FeedAndDrink from './FeedAndDrink'
+import CritterType from './CritterType';
 import Controls from './Controls';
 
 
@@ -22,9 +21,9 @@ class CritterComponents extends React.Component {
         set.state.criterSpecies to User's Critter species
         */ 
 
-        critterSpecies: 'dude',
+        critterSpecies: 'pink',
         frameInteger: '4',
-        animation:'idle'
+        animation:'idle',
 
         /* 
         ** AVAILABLE ANIMATIONS **
@@ -44,7 +43,7 @@ class CritterComponents extends React.Component {
                 'ko'
                 'jump'    
             */ 
-
+        randomInteger: null,
     };
 
     updateAction = ( frames , action, timeout,  returnToFrame, returnToAction ) => {
@@ -63,6 +62,7 @@ class CritterComponents extends React.Component {
 
         return(
             <div id="critterContainer">
+                
                 <div id="viewContainer">
                     <CritterType 
                         species={this.state.critterSpecies}
@@ -70,11 +70,20 @@ class CritterComponents extends React.Component {
                         action={this.state.animation}    
                     />
                 </div>
+                
                 <div className="critterButtonContainer">
                     <Controls 
                         updateAction={this.updateAction}
                     />
                 </div>
+
+                <div 
+                className="careControls">
+                    <FeedAndDrink
+                    // pass function to FeedAndDrink
+                    />
+                </div>
+
             </div>
         );      // return()
 

@@ -8,6 +8,7 @@ import vegetables from '../assets/FoodPack/vegetables.png'
 import fruits from '../assets/FoodPack/fruits.png'
 import drinks from '../assets/FoodPack/drinks.png'
 import sweets from '../assets/FoodPack/sweets.png'
+import axios from 'axios';
 
 class FeedAndDrink extends React.Component {
 
@@ -25,33 +26,65 @@ class FeedAndDrink extends React.Component {
         drinkInt: null,
         foodInt: null,
         randomInt: null,
+        
     }
 
-    randInt () {
+    randInt = () => {
 
         const min = 1;
-        const max = 9;
-        const rand = min + Math.random() * (max - min);
+        const max = 10;
+        const rand = Math.floor(min + Math.random() * (max - min));
         this.setState({ randomInt: rand})
+        console.log(`randomInt = ${rand}`);  
 
     }  
+
+
     
-    giveSustenance = ( buttonClicked ) => {
+    giveFood = async () => {
+        console.log(`food gib`);
+        
+        // const foodItem
 
-        if (buttonClicked === 'food') {
+        try {
             
-
-        } else if (buttonClicked === 'drink' ) {
-
-
-        } else {
-
-
+            // const res = await axios.post(`http://localhost:3000/pets/:${:pet_id}/action/feed`)
+        
+        } catch (error) {
+            
+            console.log(`error on feed`);
+             
         }
-
 
     }
 
+    giveDrink = async () => {
+        console.log(`gib drink`);
+
+        try {
+        
+            // const res = await axios.post(`http://localhost:3000/pets/:${:pet_id}/action/drink`)
+            
+        } catch (error) {
+
+            console.log(`error on sweets`);
+            
+        }
+        
+    }
+
+    giveSweets = async () => {
+        console.log(`sweetz gib`);
+        
+        try {
+        
+            // const res = await axios.post(`http://localhost:3000/pets/:${:pet_id}/action/sweets`)
+            
+        } catch (error) {
+            
+        }
+
+    }
 
 
     render (){
@@ -60,24 +93,27 @@ class FeedAndDrink extends React.Component {
             
             <div>
                 <h2>Food Animation Testing</h2>
-                <button onClick={this.giveSustenance('food')}>
+                
+                <button onClick={this.giveFood}>
                     Food
                 </button>
-                <button onClick={this.giveSustenance('drink')}>
+                
+                <button onClick={this.giveDrink}>
                     Drink
                 </button>
-                <button onClick={this.giveSustenance('sweets')}>
+
+                <button onClick={this.giveSweets}>
                     Sweets
                 </button>
 
-                {/* <button onClick={randInt}></button> */}
+                {/* <button onClick={this.randInt}>randInt</button> */}
 
                 <div className='sweets'>
                     <img src={sweets} alt="sweets" 
                     className={`
                         
                         pixelArt 
-                        ${this.state.sweetsInt}
+                        viewbox1
                     
                     `}/>
                 </div>

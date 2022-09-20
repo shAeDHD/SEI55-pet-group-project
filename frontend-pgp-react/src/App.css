@@ -12,13 +12,21 @@
   position: relative;
 
   width: 40vw;
-  right: -20vw;
+  
 
 }
 #viewContainer{
 
   display: flex;
   position: relative;
+
+}
+.careControls{
+  border-radius: 25%;
+  color: green;
+  display: flex;
+  
+
 
 }
 /* -------------------------------------------------------- */

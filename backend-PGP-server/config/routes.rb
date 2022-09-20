@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   # get '/pet/create' => 'pets#create'
   # delete '/pet' => 'pets#destroy'
 
+  post '/pets/:id/action/:action' => 'pets#update_last_action'
 
 
   #resources
